@@ -1,0 +1,35 @@
+{
+  "name": "hashtype-detector",
+  "version": "1.0.0",
+  "description": "Hashtype detector",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "require": "./dist/index.js",
+    "default": "./dist/index.modern.js"
+  },
+  "scripts": {
+    "build": "rm -rf dist && microbundle --tsconfig tsconfig.json --no-sourcemap",
+    "dev": "microbundle --watch --tsconfig tsconfig.json --no-sourcemap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xbenyx/hashtype-detector.git"
+  },
+  "keywords": [
+    "hashtype",
+    "hashtopolis"
+  ],
+  "author": "xbenyx",
+  "license": "GNUPLv3",
+  "bugs": {
+    "url": "https://github.com/xbenyx/hashtype-detector/issues"
+  },
+  "homepage": "https://github.com/xbenyx/hashtype-detector#readme",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  },
+  "files": [
+    "/dist"
+  ]
+}
