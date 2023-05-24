@@ -1,6 +1,6 @@
 {
   "name": "hashtype-detector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hashtype detector",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,6 +9,7 @@
     "default": "./dist/index.modern.js"
   },
   "scripts": {
+    "publish": "npm publish --access public",
     "build": "rm -rf dist && microbundle --tsconfig tsconfig.json --no-sourcemap",
     "dev": "microbundle --watch --tsconfig tsconfig.json --no-sourcemap"
   },
@@ -17,6 +18,8 @@
     "url": "git+https://github.com/xbenyx/hashtype-detector.git"
   },
   "keywords": [
+    "hash",
+    "hashcat",
     "hashtype",
     "hashtopolis"
   ],
@@ -30,6 +33,6 @@
     "typescript": "^5.0.4"
   },
   "files": [
-    "/dist"
+    "src"
   ]
 }
