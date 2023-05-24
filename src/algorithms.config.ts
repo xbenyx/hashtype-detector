@@ -1,10 +1,19 @@
-var HashType:
+/**
+ * All the hashcat supported hashtypes with their regex format
+ * Test in browser console.log(/^[a-f0-9]{32}(:.+)?$$/.test('nNxKL2rOEkbBc9BFLsVGG6OtOUO/8n:user'));
+**/
+
+export const algoritms =
 	[
+    {
+			"id": 777,
+			"description": "Test"
+		},
 		{
 			"regex": "^[a-f0-9]{32}(:.+)?$",
 			"rAttack": " ",
 			"options":[
-            {
+      {
 				"id": 0,
 				"description": "MD5",
 				"example": "8743b52063cd84097a65d1633f5c74f5"
@@ -97,14 +106,21 @@ var HashType:
 			"options":[
 				{
 				"id": 11,
-				"description": "Joomla < 2.5.18"
+				"description": "Joomla < 2.5.18",
 				"example": "19e0e8d91c722e7091ca7a6a6fb0f4fa:54718031842521651757785603028777"
 				}
 			]
 		},
-		{
-			"id": 12,
-			"description": "PostgreSQL"
+    {
+			"regex": "^[a-z0-9]{32}:\\postgres$",
+			"rAttack": " ",
+			"options":[
+				{
+          "id": 12,
+				"description": "PostgreSQL",
+				"example": "a6343a68d964ca596d9752250d54bb8a:postgres"
+				}
+			]
 		},
 		{
 			"regex": "^[a-f0-9]{32}:[a-z0-9]{2}$",
@@ -118,12 +134,12 @@ var HashType:
 			]
 		},
 		{
-			"regex": "^(.+\\$)?[a-z0-9\\/.+]{30}(:.+)?$",
+			"regex": "^(.+\\$)?[a-zA-Z0-9\\/.+]{30}(:.+)?$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 22,
-				"description": "Juniper Netscreen/SSG (ScreenOS)"
+				"description": "Juniper Netscreen/SSG (ScreenOS)",
 				"example": "nNxKL2rOEkbBc9BFLsVGG6OtOUO/8n:user"
 				}
 			]
@@ -192,34 +208,29 @@ var HashType:
 				},
 				{
 				"id": 6000,
-				"description": "RipeMD160"
+				"description": "RipeMD160",
 				"example": "012cb9b334ec1aeb71a9c8ce85586082467f7eb6"
 				}
 			]
 		},
 		{
-			"regex": "^{SHA}[a-z0-9\\/+]{27}=$",
+			"regex": "^{SHA}[a-zA-Z0-9\\/+]{27}=$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 101,
 				"description": "nsldap, SHA-1(Base64), Netscape LDAP SHA",
 				"example": "{SHA}uJ6qx+YUFzQbcQtyd2gpTQ5qJ3s="
-				},
-				{
-				"id": 4500,
-				"description": "sha1(sha1($pass))",
-				"example": "3db9184f5da4e463832b086211af8d2314919951"
 				}
 			]
 		},
 		{
-			"regex": "^[a-z0-9]{43}$",
+			"regex": "^{SSHA}[a-zA-Z0-9\\/+]{38}==$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 111,
-				"description": "nsldaps, SSHA-1(Base64), Netscape LDAP SSHA"
+				"description": "nsldaps, SSHA-1(Base64), Netscape LDAP SSHA",
 				"example": "{SSHA}AZKja92fbuuB9SpRlHqaoXxbTc43Mzc2MDM1Ng=="
 				}
 			]
@@ -234,7 +245,7 @@ var HashType:
 			"options":[
 				{
 				"id": 112,
-				"description": "Oracle S: Type (Oracle 11+)"
+				"description": "Oracle S: Type (Oracle 11+)",
 				"example": "ac5f1e62d21fd0529428b84d42e8955b04966703:38445748184477378130"
 				}
 			]
@@ -245,7 +256,7 @@ var HashType:
 			"options":[
 				{
 				"id": 121,
-				"description": "SMF >= v1.1"
+				"description": "SMF >= v1.1",
 				"example": "ecf076ce9d6ed3624a9332112b1cd67b236fdd11:17782686"
 				}
 			]
@@ -256,7 +267,7 @@ var HashType:
 			"options":[
 				{
 				"id": 122,
-				"description": "OS X v10.4, v10.5, v10.6"
+				"description": "OS X v10.4, v10.5, v10.6",
 				"example": "1430823483d07626ef8be3fda2ff056d0dfd818dbfe47683"
 				}
 			]
@@ -267,7 +278,7 @@ var HashType:
 			"options":[
 				{
 				"id": 124,
-				"description": "Django (SHA-1)"
+				"description": "Django (SHA-1)",
 				"example": "sha1$fe76b$02d5916550edf7fc8c886f044887f4b1abf9b013"
 				}
 			]
@@ -282,7 +293,7 @@ var HashType:
 			"options":[
 				{
 				"id": 131,
-				"description": "MSSQL(2000)"
+				"description": "MSSQL(2000)",
 				"example": "0x01002702560500000000000000000000000000000000000000008db43dd9b1972a636ad0c7d4b8c515cb8ce46578"
 				}
 			]
@@ -293,29 +304,29 @@ var HashType:
 			"options":[
 				{
 				"id": 132,
-				"description": "MSSQL(2005) & MSSQL(2008)"
+				"description": "MSSQL(2005) & MSSQL(2008)",
 				"example": "0x010018102152f8f28c8499d8ef263c53f8be369d799f931b2fbe"
 				}
 			]
 		},
 		{
-			"regex": "uXmFVrdBvv293L9kDR3VnRmx4ZM=",
+			"regex": "^[a-zA-Z0-9\\/+]{27}=$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 133,
-				"description": "PeopleSoft"
-				"example": "0x010018102152f8f28c8499d8ef263c53f8be369d799f931b2fbe"
+				"description": "PeopleSoft",
+				"example": "uXmFVrdBvv293L9kDR3VnRmx4ZM="
 				}
 			]
 		},
 		{
-			"regex": "^\\$episerver\\$\\*0\\*[a-z0-9\\/=+]+\\*[a-z0-9\\/=+]{27,28}$",
+			"regex": "^\\$episerver\\$\\*0\\*[a-zA-Z0-9\\/=+]+\\*[a-zA-Z0-9\\/=+]{27,28}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 141,
-				"description": "EPiServer 6.x < v4"
+				"description": "EPiServer 6.x < v4",
 				"example": "$episerver$*0*bEtiVGhPNlZpcUN4a3ExTg==*utkfN0EOgljbv5FoZ6+AcZD5iLk"
 				}
 			]
@@ -328,11 +339,6 @@ var HashType:
 			"regex": "^[a-f0-9]{16}$",
 			"rAttack": " ",
 			"options":[
-				{
-				"id": 101,
-				"description": "nsldap, SHA-1(Base64), Netscape LDAP SHA",
-				"example": "{SHA}uJ6qx+YUFzQbcQtyd2gpTQ5qJ3s="
-				},
 				{
 				"id": 200,
 				"description": "MySQL323",
@@ -357,7 +363,7 @@ var HashType:
 			]
 		},
 		{
-			"regex": "^\\$H\\$[a-z0-9\\/.]{31}$"
+			"regex": "^\\$H\\$[a-zA-Z0-9\\/.]{31}$",
 			"rAttack": " ",
 			"options":[
 				{
@@ -368,7 +374,7 @@ var HashType:
 			]
 		},
 		{
-			"regex": "^\\$1\\$[a-z0-9\\/.]{0,8}\\$[a-z0-9\\/.]{22}(:.*)?$"
+			"regex": "^\\$1\\$[a-z0-9\\/.]{0,8}\\$[a-zA-Z0-9\\/.]{22}(:.*)?$",
 			"rAttack": " ",
 			"options":[
 				{
@@ -394,7 +400,6 @@ var HashType:
 			"id": 620,
 			"description": "BLAKE2b-512($salt.$pass)"
 		},
-
 		{
 			"id": 1000,
 			"description": "NTLM"
@@ -409,10 +414,6 @@ var HashType:
 				"example": "4dd8965d1d476fa0d026722989a6b772:3060147285011"
 				}
 			]
-		},
-		{
-			"id": 1300,
-			"description": "SHA-224"
 		},
 		{
 			"regex": "^[a-f0-9]{64}(:.+)?$",
@@ -470,9 +471,16 @@ var HashType:
 				},
 			]
 		},
-		{
-			"id": 1411,
-			"description": "SSHA-256(Base64), LDAP {SSHA256}"
+    {
+      "regex": "^{SSHA256}[a-zA-Z0-9+]{60}$",
+			"rAttack": " ",
+			"options":[
+				{
+        "id": 1411,
+        "description": "SSHA-256(Base64), LDAP {SSHA256}",
+				"example": "{SSHA256}OZiz0cnQ5hgyel3Emh7NCbhBRCQ+HVBwYplQunHYnER7TLuV"
+				}
+			]
 		},
 		{
 			"regex": "^[a-f0-9]{70}$",
@@ -480,18 +488,18 @@ var HashType:
 			"options":[
 				{
 				"id": 1421,
-				"description": "hMailServer"
+				"description": "hMailServer",
 				"example": "8fe7ca27a17adc337cd892b1d959b4e487b8f0ef09e32214f44fb1b07e461c532e9ec3"
 				}
 			]
 		},
 		{
-			"regex": "^\\$episerver\\$\\*1\\*[a-z0-9\\/=+]+\\*[a-z0-9\\/=+]{42,43}$",
+			"regex": "^\\$episerver\\$\\*1\\*[a-zA-Z0-9\\/=+]+\\*[a-zA-Z0-9\\/=+]{42,43}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 1441,
-				"description": "EPiServer 6.x >= v4"
+				"description": "EPiServer 6.x >= v4",
 				"example": "$episerver$*1*MDEyMzQ1Njc4OWFiY2RlZg==*lRjiU46qHA7S6ZE7RfKUcYhB85ofArj1j7TrCtu3u6Y"
 				}
 			]
@@ -501,7 +509,7 @@ var HashType:
 			"description": "sha256(utf16le($pass))"
 		},
 		{
-			"regex": "^[a-z0-9\\/.]{13}$",
+			"regex": "^[a-zA-Z0-9\\/.]{13}$",
 			"rAttack": " ",
 			"options":[
 				{
@@ -512,7 +520,7 @@ var HashType:
 			]
 		},
 		{
-			"regex": "^\\$apr1\\$[a-z0-9\\/.]{0,8}\\$[a-z0-9\\/.]{22}$",
+			"regex": "^\\$apr1\\$[a-z0-9\\/.]{0,8}\\$[a-zA-Z0-9\\/.]{22}$",
 			"rAttack": " ",
 			"options":[
 				{
@@ -528,7 +536,7 @@ var HashType:
 			"options":[
 				{
 				"id": 1700,
-				"description": "SHA512"
+				"description": "SHA512",
 				"example": "82a9dda829eb7f8ffe9fbe49e45d47d2dad9664fbb7adf72492e3c81ebd3e29134d9bc12212bf83c6840f10e8246b9db54a4859b7ccd0123d86e5872c1e5082f"
 				},
 				{
@@ -574,7 +582,7 @@ var HashType:
 			]
 		},
 		{
-			"regex": "^\\$apr1\\$[a-z0-9\\/.]{0,8}\\$[a-z0-9\\/.]{22}$",
+			"regex": "^{SSHA512}[a-zA-Z0-9\z/+]{96}$",
 			"rAttack": " ",
 			"options":[
 				{
@@ -601,7 +609,7 @@ var HashType:
 			"options":[
 				{
 				"id": 1731,
-				"description": "MSSQL(2012), MSSQL(2014)"
+				"description": "MSSQL(2012), MSSQL(2014)",
 				"example": "0x02000102030434ea1b17802fd95ea6316bd61d2c94622ca3812793e8fb1672487b5c904a45a31b2ab4a78890d563d2fcf5663e46fe797d71550494be50cf4915d3f4d55ec375"
 				}
 			]
@@ -616,7 +624,7 @@ var HashType:
 			"options":[
 				{
 				"id": 1800,
-				"description": "sha512crypt, SHA512(Unix)"
+				"description": "sha512crypt, SHA512(Unix)",
 				"example": "79bba09eb9354412d0f2c037c22a777b8bf549ab12d49b77d5b25faa839e4378d8f6fa11aceb6d9413977ae5ad5d011568bad2de4f998d75fd4ce916eda83697"
 				}
 			]
@@ -642,19 +650,19 @@ var HashType:
 			"regex": "^[a-z0-9\\/.]{16}$",
 		},
 		{
-			"regex": "^[a-z0-9\\/.]{16}([:$].{1,})?$",
+			"regex": "^[a-zA-Z0-9\\/.]{16}([:$].{1,})?$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 2410,
-				"description": "Cisco-ASA MD5"
-				"example": "	02dMBMYkTdC5Ziyp:36"
+				"description": "Cisco-ASA MD5",
+				"example": "02dMBMYkTdC5Ziyp:36"
 				}
 			]
 		},
 		{
 			"id": 2500,
-			"description": "WPA/WPA2"
+			"description": "WPA/WPA2",
 		},
 		{
 			"id": 2501,
@@ -666,7 +674,7 @@ var HashType:
 			"options":[
 				{
 				"id": 2611,
-				"description": "vBulletin < v3.8.5"
+				"description": "vBulletin < v3.8.5",
 				"example": "16780ba78d2d5f02f3202901c1b6d975:568"
 				}
 			]
@@ -677,7 +685,7 @@ var HashType:
 			"options":[
 				{
 				"id": 2612,
-				"description": "PHPS"
+				"description": "PHPS",
 				"example": "$PHPS$34323438373734$5b07e065b9d78d69603e71201c6cf29f"
 				}
 			]
@@ -688,7 +696,7 @@ var HashType:
 			"options":[
 				{
 				"id": 2711,
-				"description": "vBulletin >= v3.8.5"
+				"description": "vBulletin >= v3.8.5",
 				"example": "bf366348c53ddcfbd16e63edfdd1eee6:181264250056774603641874043270"
 				}
 			]
@@ -716,12 +724,12 @@ var HashType:
 			]
 		},
 		{
-			"regex": "^(\\$2[axy]|\\$2)\\$[0-9]{2}\\$[a-z0-9\\/.]{53}$",
+			"regex": "^(\\$2[axy]|\\$2)\\$[0-9]{2}\\$[a-zA-Z0-9\\/.]{53}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 3200,
-				"description": "bcrypt, Blowfish(OpenBSD)"
+				"description": "bcrypt, Blowfish(OpenBSD)",
 				"example": "$2a$05$LhayLxezLhK1LhWvKxCyLOj0j1u.Kj0jZ0pEmm134uzrQlFvQJLF6"
 				}
 			]
@@ -732,16 +740,16 @@ var HashType:
 			"options":[
 				{
 				"id": 3711,
-				"description": "Mediawiki B type"
+				"description": "Mediawiki B type",
 				"example": "$B$56668501$0ce106caa70af57fd525aeaf80ef2898"
 				}
 			]
 		},
 		{
 			"id": 3800,
-			"description": "md5($salt.$pass.$salt)"
+			"description": "md5($salt.$pass.$salt)",
+      "example": "2e45c4b99396c6cb2db8bda0d3df669f:1234"
 		},
-
 		{
 			"id": 4110,
 			"description": "md5($salt.md5($pass.$salt))"
@@ -765,7 +773,7 @@ var HashType:
 			"options":[
 				{
 				"id": 4521,
-				"description": "Redmine Project Management Web App"
+				"description": "Redmine Project Management Web App",
 				"example": "1fb46a8f81d8838f46879aaa29168d08aa6bf22d:3290afd193d90e900e8021f81409d7a9"
 				}
 			]
@@ -784,7 +792,7 @@ var HashType:
 			"options":[
 				{
 				"id": 4800,
-				"description": "MD5(Chap), iSCSI CHAP authentication"
+				"description": "MD5(Chap), iSCSI CHAP authentication",
 				"example": "afd09efdd6f8ca9f18ec77c5869788c3:01020304050607080910111213141516:01"
 				}
 			]
@@ -803,7 +811,7 @@ var HashType:
 			"options":[
 				{
 				"id": 5100,
-				"description": "Half MD5"
+				"description": "Half MD5",
 				"example": "8743b52063cd8409"
 				}
 			]
@@ -818,7 +826,7 @@ var HashType:
 			"options":[
 				{
 				"id": 5300,
-				"description": "IKE-PSK SHA1"
+				"description": "IKE-PSK SHA1",
 				"example": "https://hashcat.net/misc/example_hashes/hashcat.ikemd5"
 				}
 			]
@@ -829,8 +837,8 @@ var HashType:
 			"options":[
 				{
 				"id": 5400,
-				"description": "IKE-PSK MD5"
-				"example": ""
+				"description": "IKE-PSK MD5",
+				"example": "https://hashcat.net/misc/example_hashes/hashcat.ikesha1"
 				}
 			]
 		},
@@ -840,7 +848,7 @@ var HashType:
 			"options":[
 				{
 				"id": 5500,
-				"description": "NetNTLMv1-VANILLA / NetNTLMv1+ESS"
+				"description": "NetNTLMv1-VANILLA / NetNTLMv1+ESS",
 				"example": "u4-netntlm::kNS:338d08f8e26de93300000000000000000000000000000000:9526fb8c23a90751cdd619b6cea564742e1e4bf33006ba41:cb8086049ec4736c"
 				}
 			]
@@ -851,13 +859,13 @@ var HashType:
 			"options":[
 				{
 				"id": 5600,
-				"description": "NetNTLMv2"
+				"description": "NetNTLMv2",
 				"example": "admin::N46iSNekpT:08ca45b7d7ea58ee:88dcbe4446168966a153a0064958dac6:5c7830315c7830310000000000000b45c67103d07d7b95acd12ffa11230e0000000052920b85f78d013c31cdb3b92f5d765c783030"
 				}
 			]
 		},
 		{
-			"regex": "^[a-z0-9]{43}$",
+			"regex": "^[a-zA-Z0-9]{43}$",
 			"rAttack": " ",
 			"options":[
 				{
@@ -873,7 +881,7 @@ var HashType:
 			"options":[
 				{
 				"id": 5800,
-				"description": "Samsung Android Password/PIN"
+				"description": "Samsung Android Password/PIN",
 				"example": "0223b799d526b596fe4ba5628b9e65068227e68e:f6d45822728ddb2c"
 				}
 			]
@@ -928,7 +936,7 @@ var HashType:
 			"description": "TrueCrypt 5.0+ PBKDF2-HMAC-RipeMD160 + AES-Twofish-Serpent/Serpent-Twofish-AES + boot"
 		},
 		{
-			"regex": "^{smd5}[a-z0-9$\\/.]{31}$",
+			"regex": "^{smd5}[a-zA-Z0-9$\\/.]{31}$",
 			"rAttack": " ",
 			"options":[
 				{
@@ -939,23 +947,23 @@ var HashType:
 			]
 		},
 		{
-			"regex": "^{ssha256}[0-9]{2}\\$[a-z0-9$\\/.]{60}$",
+			"regex": "^{ssha256}[0-9]{2}\\$[a-zA-Z0-9$\\/.]{60}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 6400,
-				"description": "AIX {ssha256}"
+				"description": "AIX {ssha256}",
 				"example": "{ssha256}06$aJckFGJAB30LTe10$ohUsB7LBPlgclE3hJg9x042DLJvQyxVCX.nZZLEz.g2"
 				}
 			]
 		},
 		{
-			"regex": "^{ssha512}[0-9]{2}\\$[a-z0-9\\/.]{16,48}\\$[a-z0-9\\/.]{86}$",
+			"regex": "^{ssha512}[0-9]{2}\\$[a-zA-Z0-9\\/.]{16,48}\\$[a-zA-Z0-9\\/.]{86}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 6500,
-				"description": "AIX {ssha512}"
+				"description": "AIX {ssha512}",
 				"example": "{ssha512}06$bJbkFGJAB30L2e23$bXiXjyH5YGIyoWWmEVwq67nCU5t7GLy9HkCzrodRCQCx3r9VvG98o7O3V0r9cVrX3LPPGuHqT5LLn0oGCuI1.."
 				}
 			]
@@ -966,18 +974,18 @@ var HashType:
 			"options":[
 				{
 				"id": 6600,
-				"description": "1Password, Agile Keychain"
+				"description": "1Password, Agile Keychain",
 				"example": "https://hashcat.net/misc/example_hashes/hashcat.agilekeychain"
 				}
 			]
 		},
 		{
-			"regex": "^{ssha1}[0-9]{2}\\$[a-z0-9$\\/.]{44}$",
+			"regex": "^{ssha1}[0-9]{2}\\$[a-zA-Z0-9$\\/.]{44}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 6700,
-				"description": "AIX {ssha1}"
+				"description": "AIX {ssha1}",
 				"example": "{ssha1}06$bJbkFGJAB30L2e23$dCESGOsP7jaIIAJ1QAcmaGeG.kr"
 				}
 			]
@@ -988,18 +996,18 @@ var HashType:
 			"options":[
 				{
 				"id": 6800,
-				"description": "Lastpass"
+				"description": "Lastpass",
 				"example": "a2d1f7b7a1862d0d4a52644e72d59df5:500:lp@trash-mail.com"
 				}
 			]
 		},
 		{
-			"regex": "^[a-z0-9=]{47}$",
+			"regex": "^[a-zA-Z0-9=]{47}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 7000,
-				"description": "Fortigate (FortiOS)"
+				"description": "Fortigate (FortiOS)",
 				"example": "AK1AAECAwQFBgcICRARNGqgeC3is8gv2xWWRony9NJnDgE="
 				}
 			]
@@ -1010,7 +1018,7 @@ var HashType:
 			"options":[
 				{
 				"id": 7100,
-				"description": "OS X v10.8 / v10.9"
+				"description": "OS X v10.8 / v10.9",
 				"example": "$ml$35460$93a94bd24b5de64d79a5e49fa372827e739f4d7b6975c752c9a0ff1e5cf72e05$752351df64dd2ce9dc9c64a72ad91de6581a15c19176266b44d98919dfa81f0f96cbcb20a1ffb400718c20382030f637892f776627d34e021bad4f81b7de8222"
 				}
 			]
@@ -1021,7 +1029,7 @@ var HashType:
 			"options":[
 				{
 				"id": 7200,
-				"description": "GRUB 2"
+				"description": "GRUB 2",
 				"example": "grub.pbkdf2.sha512.10000.7d391ef48645f626b427b1fae06a7219b5b54f4f02b2621f86b5e36e83ae492bd1db60871e45bc07925cecb46ff8ba3db31c723c0c6acbd4f06f60c5b246ecbf.26d59c52b50df90d043f070bd9cbcd92a74424da42b3666fdeb08f1a54b8f1d2f4f56cf436f9382419c26798dc2c209a86003982b1e5a9fcef905f4dfaa4c524"
 				}
 			]
@@ -1032,18 +1040,18 @@ var HashType:
 			"options":[
 				{
 				"id": 7300,
-				"description": "IPMI2 RAKP HMAC-SHA1"
+				"description": "IPMI2 RAKP HMAC-SHA1",
 				"example": "b7c2d6f13a43dce2e44ad120a9cd8a13d0ca23f0414275c0bbe1070d2d1299b1c04da0f1a0f1e4e2537300263a2200000000000000000000140768617368636174:472bdabe2d5d4bffd6add7b3ba79a291d104a9ef"
 				}
 			]
 		},
 		{
-			"regex": "^\\$5\\$(rounds=[0-9]+\\$)?[a-z0-9\\/.]{0,16}\\$[a-z0-9\\/.]{43}$",
+			"regex": "^\\$5\\$(rounds=[0-9]+\\$)?[a-zA-Z0-9\\/.]{0,16}\\$[a-zA-Z0-9\\/.]{43}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 7400,
-				"description": "sha256crypt, SHA256(Unix)"
+				"description": "sha256crypt, SHA256(Unix)",
 				"example": "$5$rounds=5000$GX7BopJZJxPc/KEK$le16UF8I2Anb.rOrn22AUPWvzUETDGefUmAV8AZkGcD"
 				}
 			]
@@ -1058,18 +1066,18 @@ var HashType:
 			"options":[
 				{
 				"id": 7500,
-				"description": "Kerberos 5 AS-REQ Pre-Auth"
+				"description": "Kerberos 5 AS-REQ Pre-Auth",
 				"example": "$krb5pa$23$user$realm$salt$4e751db65422b2117f7eac7b721932dc8aa0d9966785ecd958f971f622bf5c42dc0c70b532363138363631363132333238383835"
 				}
 			]
 		},
 		{
-			"regex": "^(.+)?\\$[a-f0-9]{16}$",
+			"regex": "^(.+)?\\$[A-F0-9]{16}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 7700,
-				"description": "SAP CODVN B (BCODE)"
+				"description": "SAP CODVN B (BCODE)",
 				"example": "USER$C8B48F26B87B7EA7"
 				}
 			]
@@ -1079,12 +1087,12 @@ var HashType:
 			"description": "SAP CODVN B (BCODE) from RFC_READ_TABLE"
 		},
 		{
-			"regex": "^(.+)?\\$[a-f0-9]{40}$",
+			"regex": "^(.+)?\\$[A-F0-9]{40}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 7800,
-				"description": "SAP CODVN F/G (PASSCODE)"
+				"description": "SAP CODVN F/G (PASSCODE)",
 				"example": "USER$ABCAD719B17E7F794DF7E686E563E9E2D24DE1D0"
 				}
 			]
@@ -1094,12 +1102,12 @@ var HashType:
 			"description": "SAP CODVN F/G (PASSCODE) from RFC_READ_TABLE"
 		},
 		{
-			"regex": "^\\$S\\$[a-z0-9\\/.]{52}$",
+			"regex": "^\\$S\\$[a-zA-Z0-9\\/.]{52}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 7900,
-				"description": "Drupal7"
+				"description": "Drupal7",
 				"example": "$S$C33783772bRXEx1aCsvY.dqgaaSu76XmVlKrW9Qu8IQlvxHlmzLf"
 				}
 			]
@@ -1110,7 +1118,7 @@ var HashType:
 			"options":[
 				{
 				"id": 8000,
-				"description": "Sybase ASE"
+				"description": "Sybase ASE",
 				"example": "0xc00778168388631428230545ed2c976790af96768afa0806fe6c0da3b28f3e132137eac56f9bad027ea2"
 				}
 			]
@@ -1121,7 +1129,7 @@ var HashType:
 			"options":[
 				{
 				"id": 8100,
-				"description": "Citrix Netscaler"
+				"description": "Citrix Netscaler",
 				"example": "1765058016a22f1b4e076dccd1c3df4e8e5c0839ccded98ea"
 				}
 			]
@@ -1132,7 +1140,7 @@ var HashType:
 			"options":[
 				{
 				"id": 8200,
-				"description": "1Password, Cloud Keychain"
+				"description": "1Password, Cloud Keychain",
 				"example": "https://hashcat.net/misc/example_hashes/hashcat.cloudkeychain"
 				}
 			]
@@ -1143,7 +1151,7 @@ var HashType:
 			"options":[
 				{
 				"id": 8300,
-				"description": "DNSSEC (NSEC3)"
+				"description": "DNSSEC (NSEC3)",
 				"example": "7b5n74kq8r441blc2c5qbbat19baj79r:.lvdsiqfj.net:33164473:1"
 				}
 			]
@@ -1154,18 +1162,18 @@ var HashType:
 			"options":[
 				{
 				"id": 8400,
-				"description": "WBB3, Woltlab Burning Board 3"
+				"description": "WBB3, Woltlab Burning Board 3",
 				"example": "8084df19a6dc81e2597d051c3d8b400787e2d5a9:6755045315424852185115352765375338838643"
 				}
 			]
 		},
 		{
-			"regex": "^(user-.+:)?\\$racf\\$\\*.+\\*[a-f0-9]{16}$",
+			"regex": "^(user-.+:)?\\$racf\\$\\*.+\\*[A-F0-9]{16}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 8500,
-				"description": "RACF"
+				"description": "RACF",
 				"example": "$racf$*USER*FC2577C6EBE6265B"
 				}
 			]
@@ -1182,12 +1190,12 @@ var HashType:
 			]
 		},
 		{
-			"regex": "^\([a-z0-9\/+]{20}\)$",
+			"regex": "^\\([a-zA-Z0-9\\/+]{20}\\)$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 8700,
-				"description": "Lotus Notes/Domino 6"
+				"description": "Lotus Notes/Domino 6",
 				"example": "(GDpOtD35gGlyDksQRxEU)"
 				}
 			]
@@ -1198,18 +1206,18 @@ var HashType:
 			"options":[
 				{
 				"id": 8800,
-				"description": "Android FDE <= 4.3"
+				"description": "Android FDE <= 4.3",
 				"example": "https://hashcat.net/misc/example_hashes/hashcat.android43fde"
 				}
 			]
 		},
 		{
-			"regex": "^SCRYPT:[0-9]{1,}:[0-9]{1}:[0-9]{1}:[a-z0-9:\\/+=]{1,}$",
+			"regex": "^SCRYPT:[0-9]{1,}:[0-9]{1}:[0-9]{1}:[a-zA-Z0-9:\\/+=]{1,}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 8900,
-				"description": "scrypt"
+				"description": "scrypt",
 				"example": "SCRYPT:1024:1:1:MDIwMzMwNTQwNDQyNQ==:5FW+zWivLxgCWj7qLiQbeC8zaNQ+qdO0NUinvqyFcfo="
 				}
 			]
@@ -1219,34 +1227,34 @@ var HashType:
 			"description": "Password Safe v2"
 		},
 		{
-			"regex": "^\\([a-z0-9\\/+]{49}\\)$",
+			"regex": "^\\([a-zA-Z0-9\\/+]{49}\\)$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 9100,
-				"description": "Lotus Notes/Domino"
+				"description": "Lotus Notes/Domino",
 				"example": "(HsjFebq0Kh9kH7aAZYc7kY30mC30mC3KmC30mCluagXrvWKj1)"
 				}
 			]
 		},
 		{
-			"regex": "^\\$8\\$[a-z0-9\\/.]{14}\\$[a-z0-9\\/.]{43}$",
+			"regex": "^\\$8\\$[a-zA-Z0-9\\/.]{14}\\$[a-zA-Z0-9\\/.]{43}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 9200,
-				"description": "Cisco-IOS $8$ (PBKDF2-SHA256)"
+				"description": "Cisco-IOS $8$ (PBKDF2-SHA256)",
 				"example": "$8$TnGX/fE4KGHOVU$pEhnEvxrvaynpi8j4f.EMHr6M.FzU8xnZnBr/tJdFWk"
 				}
 			]
 		},
 		{
-			"regex": "^\\$9\\$[a-z0-9\\/.]{14}\\$[a-z0-9\\/.]{43}$",
+			"regex": "^\\$9\\$[a-zA-Z0-9\\/.]{14}\\$[a-zA-Z0-9\\/.]{43}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 9300,
-				"description": "Cisco-IOS $9$ (scrypt)"
+				"description": "Cisco-IOS $9$ (scrypt)",
 				"example": "$9$2MJBozw/9R3UsU$2lFhcKvpghcyw8deP25GOfyZaagyUOGBymkryvOdfo6"
 				}
 			]
@@ -1257,7 +1265,7 @@ var HashType:
 			"options":[
 				{
 				"id": 9400,
-				"description": "Office 2007"
+				"description": "Office 2007",
 				"example": "$office$*2007*20*128*16*411a51284e0d0200b131a8949aaaa5cc*117d532441c63968bee7647d9b7df7d6*df1d601ccf905b375575108f42ef838fb88e1cde"
 				}
 			]
@@ -1268,7 +1276,7 @@ var HashType:
 			"options":[
 				{
 				"id": 9500,
-				"description": "Office 2010"
+				"description": "Office 2010",
 				"example": "$office$*2010*100000*128*16*77233201017277788267221014757262*b2d0ca4854ba19cf95a2647d5eee906c*e30cbbb189575cafb6f142a90c2622fa9e78d293c5b0c001517b3f5b82993557"
 				}
 			]
@@ -1279,7 +1287,7 @@ var HashType:
 			"options":[
 				{
 				"id": 9600,
-				"description": "Office 2013"
+				"description": "Office 2013",
 				"example": "$office$*2013*100000*256*16*7dd611d7eb4c899f74816d1dec817b3b*948dc0b2c2c6c32f14b5995a543ad037*0b7ee0e48e935f937192a59de48a7d561ef2691d5c8a3ba87ec2d04402a94895"
 				}
 			]
@@ -1295,12 +1303,12 @@ var HashType:
 				},
 				{
 				"id": 9710,
-				"description": "MS Office <= 2003 $0/$1, MD5 + RC4, collider #1"
+				"description": "MS Office <= 2003 $0/$1, MD5 + RC4, collider #1",
 				"example": "$oldoffice$0*55045061647456688860411218030058*e7e24d163fbd743992d4b8892bf3f2f7*493410dbc832557d3fe1870ace8397e2"
 				},
 				{
 				"id": 9720,
-				"description": "MS Office <= 2003 $0/$1, MD5 + RC4, collider #2"
+				"description": "MS Office <= 2003 $0/$1, MD5 + RC4, collider #2",
 				"example": "$oldoffice$0*55045061647456688860411218030058*e7e24d163fbd743992d4b8892bf3f2f7*493410dbc832557d3fe1870ace8397e2:91b2e062b9"
 				}
 			]
@@ -1311,28 +1319,23 @@ var HashType:
 			"options":[
 				{
 				"id": 9800,
-				"description": "MS Office ? 2003 SHA1 + RC4, oldoffice$3, oldoffice$4"
+				"description": "MS Office ? 2003 SHA1 + RC4, oldoffice$3, oldoffice$4",
 				"example": "$oldoffice$3*83328705222323020515404251156288*2855956a165ff6511bc7f4cd77b9e101*941861655e73a09c40f7b1e9dfd0c256ed285acd"
 				},
 				{
 				"id": 9810,
-				"description": "MS Office <= 2003 $3, SHA1 + RC4, collider #1"
+				"description": "MS Office <= 2003 $3, SHA1 + RC4, collider #1",
 				"example": "$oldoffice$3*83328705222323020515404251156288*2855956a165ff6511bc7f4cd77b9e101*941861655e73a09c40f7b1e9dfd0c256ed285acd"
-				},
-				{
-				"id": 9820,
-				"description": "MS Office <= 2003 $3, SHA1 + RC4, collider #2"
-				"example": "$oldoffice$3*83328705222323020515404251156288*2855956a165ff6511bc7f4cd77b9e101*941861655e73a09c40f7b1e9dfd0c256ed285acd:b8f63619ca"
 				}
 			]
 		},
 		{
-			"regex": "^\$oldoffice\$[34]\*[a-f0-9]{32}\*[a-f0-9]{32}\*[a-f0-9]{40}:[a-f0-9]{10}",
+			"regex": "^\\$oldoffice\\$[34]\\*[a-f0-9]{32}\\*[a-f0-9]{32}\\*[a-f0-9]{40}:[a-f0-9]{10}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 9820,
-				"description": "MS Office <= 2003 $3, SHA1 + RC4, collider #2"
+				"description": "MS Office <= 2003 $3, SHA1 + RC4, collider #2",
 				"example": "$oldoffice$3*83328705222323020515404251156288*2855956a165ff6511bc7f4cd77b9e101*941861655e73a09c40f7b1e9dfd0c256ed285acd:b8f63619ca"
 				}
 			]
@@ -1343,18 +1346,18 @@ var HashType:
 			"options":[
 				{
 				"id": 9900,
-				"description": "Radmin2"
+				"description": "Radmin2",
 				"example": "22527bee5c29ce95373c4e0f359f079b"
 				}
 			]
 		},
 		{
-			"regex": "^(\\$django\\$\\*1\\*)?pbkdf2_sha256\\$[0-9]+\\$[a-z0-9]+\\$[a-z0-9\\/+=]{44}$",
+			"regex": "^(\\$django\\$\\*1\\*)?pbkdf2_sha256\\$[0-9]+\\$[a-zA-Z0-9]+\\$[a-zA-Z0-9\\/+=]{44}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 10000,
-				"description": "Django (PBKDF2-SHA256)"
+				"description": "Django (PBKDF2-SHA256)",
 				"example": "pbkdf2_sha256$20000$H0dPx8NeajVu$GiC4k5kqbbR9qWBlsRgDywNqC2vd9kqfk7zdorEnNas="
 				}
 			]
@@ -1365,35 +1368,35 @@ var HashType:
 			"options":[
 				{
 				"id": 10100,
-				"description": "SipHash"
+				"description": "SipHash",
 				"example": "ad61d78c06037cd9:2:4:81533218127174468417660201434054"
 				}
 			]
 		},
 		{
-			"regex": "^\\$cram_md5\\$[a-z0-9\\/+=-]+\\$[a-z0-9\\/+=-]{52}$",
+			"regex": "^\\$cram_md5\\$[a-zA-Z0-9\\/+=-]+\\$[a-zA-Z0-9\\/+=-]{52}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 10200,
-				"description": "Cram MD5"
+				"description": "Cram MD5",
 				"example": "$cram_md5$PG5vLXJlcGx5QGhhc2hjYXQubmV0Pg==$dXNlciA0NGVhZmQyMmZlNzY2NzBmNmIyODc5MDgxYTdmNWY3MQ=="
 				}
 			]
 		},
 		{
-			"regex": "^{x-issha,\\s[0-9]{4}}[a-z0-9\\/+=]+$",
+			"regex": "^{x-issha,\\s[0-9]{4}}[a-zA-Z0-9\\/+=]+$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 10300,
-				"description": "SAP CODVN H (PWDSALTEDHASH) iSSHA-1"
+				"description": "SAP CODVN H (PWDSALTEDHASH) iSSHA-1",
 				"example": "{x-issha, 1024}C0624EvGSdAMCtuWnBBYBGA0chvqAflKY74oEpw/rpY="
 				}
 			]
 		},
 		{
-			"regex": "\$pdf\$1\*[2|3]\*[0-9]{2}\*[-0-9]{1,6}\*[0-9]\*[0-9]{2}\*[a-f0-9]{32,32}\*[0-9]{2}\*[a-f0-9]{64}\*[0-9]{2}\*[a-f0-9]{64}",
+			"regex": "^\\$pdf\\$1\\*[2|3]\\*[0-9]{2}\\*[-0-9]{1,6}\\*[0-9]\\*[0-9]{2}\\*[a-f0-9]{32,32}\\*[0-9]{2}\\*[a-f0-9]{64}\\*[0-9]{2}\\*[a-f0-9]{64}",
 			"rAttack": " ",
 			"options":[
 				{
@@ -1409,12 +1412,12 @@ var HashType:
 			]
 		},
 		{
-			"regex": "\$pdf\$1\*[2|3]\*[0-9]{2}\*[-0-9]{1,6}\*[0-9]\*[0-9]{2}\*[a-f0-9]{32}\*[0-9]{2}\*[a-f0-9]{64}\*[0-9]{2}\*[a-f0-9]{64}:[a-f0-9]{10}",
+			"regex": "^\\$pdf\\$1\\*[2|3]\\*[0-9]{2}\\*[-0-9]{1,6}\\*[0-9]\\*[0-9]{2}\\*[a-f0-9]{32}\\*[0-9]{2}\\*[a-f0-9]{64}\\*[0-9]{2}\\*[a-f0-9]{64}:[a-f0-9]{10}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 10420,
-				"description": "PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #2"
+				"description": "PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #2",
 				"example": "$pdf$1*2*40*-1*0*16*01221086741440841668371056103222*32*27c3fecef6d46a78eb61b8b4dbc690f5f8a2912bbb9afc842c12d79481568b74*32*0000000000000000000000000000000000000000000000000000000000000000:6a8aedccb7"
 				}
 			]
@@ -1425,29 +1428,29 @@ var HashType:
 			"options":[
 				{
 				"id": 10500,
-				"description": "PDF 1.4 - 1.6 (Acrobat 5 - 8)"
+				"description": "PDF 1.4 - 1.6 (Acrobat 5 - 8)",
 				"example": "$pdf$2*3*128*-1028*1*16*da42ee15d4b3e08fe5b9ecea0e02ad0f*32*c9b59d72c7c670c42eeb4fca1d2ca15000000000000000000000000000000000*32*c4ff3e868dc87604626c2b8c259297a14d58c6309c70b00afdfb1fbba10ee571"
 				}
 			]
 		},
 		{
-			"regex": "\$pdf\$5\*[5|6]\*[0-9]{3}\*[-0-9]{1,6}\*[0-9]\*[0-9]{1,4}\*[a-f0-9]{0,1024}\*[0-9]{1,4}\*[a-f0-9]{0,1024}\*[0-9]{1,4}\*[a-f0-9]{0,1024}\*[0-9]{1,4}\*[a-f0-9]{0,1024}\*[0-9]{1,4}\*[a-f0-9]{0,1024}",
+			"regex": "^\\$pdf\\$5\\*[5|6]\\*[0-9]{3}\\*[-0-9]{1,6}\\*[0-9]\\*[0-9]{1,4}\\*[a-f0-9]{0,1024}\\*[0-9]{1,4}\\*[a-f0-9]{0,1024}\\*[0-9]{1,4}\\*[a-f0-9]{0,1024}\\*[0-9]{1,4}\\*[a-f0-9]{0,1024}\\*[0-9]{1,4}\\*[a-f0-9]{0,1024}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 10600,
-				"description": "PDF 1.7 Level 3 (Acrobat 9)"
+				"description": "PDF 1.7 Level 3 (Acrobat 9)",
 				"example": "$pdf$5*5*256*-1028*1*16*20583814402184226866485332754315*127*f95d927a94829db8e2fbfbc9726ebe0a391b22a084ccc2882eb107a74f7884812058381440218422686648533275431500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000*127*00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000*32*0000000000000000000000000000000000000000000000000000000000000000*32*0000000000000000000000000000000000000000000000000000000000000000"
 				}
 			]
 		},
 		{
-			"regex": "\$pdf\$5\*[5|6]\*[0-9]{3}\*[-0-9]{1,6}\*[0-9]\*[0-9]{1,4}\*[a-f0-9]{0,1024}\*[0-9]{1,4}\*[a-f0-9]{0,1024}\*[0-9]{1,4}\*[a-f0-9]{0,1024}",
+			"regex": "^\\$pdf\\$5\\*[5|6]\\*[0-9]{3}\\*[-0-9]{1,6}\\*[0-9]\\*[0-9]{1,4}\\*[a-f0-9]{0,1024}\\*[0-9]{1,4}\\*[a-f0-9]{0,1024}\\*[0-9]{1,4}\\*[a-f0-9]{0,1024}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 10700,
-				"description": "PDF 1.7 Level 8 (Acrobat 10 - 11)"
+				"description": "PDF 1.7 Level 8 (Acrobat 10 - 11)",
 				"example": "$pdf$5*6*256*-1028*1*16*21240790753544575679622633641532*127*2d1ecff66ea354d3d34325a6503da57e03c199c21b13dd842f8d515826054d8d2124079075354457567962263364153200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000*127*00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000*32*0000000000000000000000000000000000000000000000000000000000000000*32*0000000000000000000000000000000000000000000000000000000000000000"
 				}
 			]
@@ -1458,9 +1461,14 @@ var HashType:
 			"options":[
 				{
 				"id": 10800,
-				"description": "SHA384"
+				"description": "SHA384",
 				"example": "07371af1ca1fca7c6941d2399f3610f1e392c56c6d73fddffe38f18c430a2817028dae1ef09ac683b62148a2c8757f42"
-				}
+				},
+        {
+        "id": 17900,
+        "description": "Keccak-384",
+        "example": "5804b7ada5806ba79540100e9a7ef493654ff2a21d94d4f2ce4bf69abda5d94bf03701fe9525a15dfdc625bfbd769701"
+        }
 			]
 		},
 		{
@@ -1484,12 +1492,12 @@ var HashType:
 			"description": "sha384(utf16le($pass))"
 		},
 		{
-			"regex": "^sha256[:$][0-9]+[:$][a-z0-9\\/+]+[:$][a-z0-9\\/+]{32,128}$",
+			"regex": "^sha256[:$][0-9]+[:$][a-zA-Z0-9\\/+=]+[:$][a-zA-Z0-9\\/+]{32,128}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 10900,
-				"description": "PBKDF2-HMAC-SHA256"
+				"description": "PBKDF2-HMAC-SHA256",
 				"example": "sha256:1000:MTc3MTA0MTQwMjQxNzY=:PYjCU215Mi57AYPKva9j7mvF4Rc5bCnt"
 				}
 			]
@@ -1504,7 +1512,7 @@ var HashType:
 			"options":[
 				{
 				"id": 11100,
-				"description": "PostgreSQL Challenge-Response Authentication (MD5)"
+				"description": "PostgreSQL Challenge-Response Authentication (MD5)",
 				"example": "$postgres$postgres*f0784ea5*2091bb7d4725d1ca85e8de6ec349baf6"
 				}
 			]
@@ -1515,18 +1523,18 @@ var HashType:
 			"options":[
 				{
 				"id": 11200,
-				"description": "MySQL Challenge-Response Authentication (SHA1)"
+				"description": "MySQL Challenge-Response Authentication (SHA1)",
 				"example": "$mysqlna$1c24ab8d0ee94d70ab1f2e814d8f0948a14d10b9*437e93572f18ae44d9e779160c2505271f85821d"
 				}
 			]
 		},
 		{
-			"regex": "^\\$bitcoin\\$[0-9]{2,4}\$[a-f0-9$]{250,350}",
+			"regex": "^\\$bitcoin\\$[0-9]{2,4}\\$[a-f0-9$]{250,350}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 11300,
-				"description": "Bitcoin/Litecoin wallet.dat"
+				"description": "Bitcoin/Litecoin wallet.dat",
 				"example": "$bitcoin$96$d011a1b6a8d675b7a36d0cd2efaca32a9f8dc1d57d6d01a58399ea04e703e8bbb44899039326f7a00f171a7bbc854a54$16$1563277210780230$158555$96$628835426818227243334570448571536352510740823233055715845322741625407685873076027233865346542174$66$625882875480513751851333441623702852811440775888122046360561760525"
 				}
 			]
@@ -1547,12 +1555,12 @@ var HashType:
 			]
 		},
 		{
-			"regex": "^\\$7z\\$[0-9]\$[0-9]{1,2}\$[0-9]{1}\$[^$]{0,64}\$[0-9]{1,2}\$[a-f0-9]{32}\$[0-9]{1,10}\$[0-9]{1,6}\$[0-9]{1,6}\$[a-f0-9]{2,}",
+			"regex": "^\\$7z\\$[0-9]\\$[0-9]{1,2}\\$[0-9]{1}\\$[^$]{0,64}\\$[0-9]{1,2}\\$[a-f0-9]{32}\\$[0-9]{1,10}\\$[0-9]{1,6}\\$[0-9]{1,6}\\$[a-f0-9]{2,}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 11600,
-				"description": "7-Zip"
+				"description": "7-Zip",
 				"example": "$7z$0$19$0$salt$8$f6196259a7326e3f0000000000000000$185065650$112$98$f3bc2a88062c419a25acd40c0c2d75421cf23263f69c51b13f9b1aada41a8a09f9adeae45d67c60b56aad338f20c0dcc5eb811c7a61128ee0746f922cdb9c59096869f341c7a9cb1ac7bb7d771f546b82cf4e6f11a5ecd4b61751e4d8de66dd6e2dfb5b7d1022d2211e2d66ea1703f96"
 				}
 			]
@@ -1606,7 +1614,7 @@ var HashType:
 			"description": "Oracle T: Type (Oracle 12+)"
 		},
 		{
-			"regex": "^_[a-z0-9\\/.]{19}$",
+			"regex": "^_[a-zA-Z0-9\\/.]{19}$",
 			"rAttack": " ",
 			"options":[
 				{
@@ -1617,12 +1625,12 @@ var HashType:
 			]
 		},
 		{
-			"regex": "^\$RAR3\$\*0\*[0-9a-f]{1,16}\*[0-9a-f]+$",
+			"regex": "^\\$RAR3\\$\\*0\\*[0-9a-f]{1,16}\\*[0-9a-f]+$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 12500,
-				"description": "RAR3-hp"
+				"description": "RAR3-hp",
 				"example": "$RAR3$*0*45109af8ab5f297a*adbf6c5385d7a40373e8f77d7b89d317"
 				}
 			]
@@ -1644,23 +1652,23 @@ var HashType:
 			"description": "Android FDE (Samsung DEK)"
 		},
 		{
-			"regex": "^\$rar5\$[0-9a-f]{1,2}\$[0-9a-f]{1,32}\$[0-9a-f]{1,2}\$[0-9a-f]{1,32}\$[0-9a-f]{1,2}\$[0-9a-f]{1,16}$",
+			"regex": "^\\$rar5\\$[0-9a-f]{1,2}\\$[0-9a-f]{1,32}\\$[0-9a-f]{1,2}\\$[0-9a-f]{1,32}\\$[0-9a-f]{1,2}\\$[0-9a-f]{1,16}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 13000,
-				"description": "RAR5"
-				"example": "$RAR3$*0*45109af8ab5f297a*adbf6c5385d7a40373e8f77d7b89d317"
+				"description": "RAR5",
+				"example": "$rar5$16$74575567518807622265582327032280$15$f8b4064de34ac02ecabfe9abdf93ed6a$8$9843834ed0f7c754"
 				}
 			]
 		},
 		{
-			"regex": "\$krb5tgs\$23\$\*[^*]*\*\$[a-f0-9]{32}\$[a-f0-9]{64,40960}",
+			"regex": "^\\$krb5tgs\\$23\\$\\*[^*]*\\*\\$[a-f0-9]{32}\\$[a-f0-9]{64,40960}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 13100,
-				"description": "Kerberos 5 TGS-REP etype 23"
+				"description": "Kerberos 5 TGS-REP etype 23",
 				"example": "$krb5tgs$23$*user$realm$test/spn*$63386d22d359fe42230300d56852c9eb$891ad31d09ab89c6b3b8c5e5de6c06a7f49fd559d7a9a3c32576c8fedf705376cea582ab5938f7fc8bc741acf05c5990741b36ef4311fe3562a41b70a4ec6ecba849905f2385bb3799d92499909658c7287c49160276bca0006c350b0db4fd387adc27c01e9e9ad0c20ed53a7e6356dee2452e35eca2a6a1d1432796fc5c19d068978df74d3d0baf35c77de12456bf1144b6a750d11f55805f5a16ece2975246e2d026dce997fba34ac8757312e9e4e6272de35e20d52fb668c5ed"
 				}
 			]
@@ -1674,24 +1682,13 @@ var HashType:
 			"description": "AxCrypt in memory SHA1"
 		},
 		{
-			"regex": "^\$keepass\$\*2\*\d+\*\d+\*[0-9a-f]+\*[0-9a-f]+\*[0-9a-f]+\*[0-9a-f]+\*[0-9a-f]+$",
+			"regex": "^\\$keepass\\$\\*2\\*\\d+\\*\\d+\\*[0-9a-f]+\\*[0-9a-f]+\\*[0-9a-f]+\\*[0-9a-f]+\\*[0-9a-f]+\\*\\d+\\*\\d+\\*[0-9a-f]+$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 13400,
-				"description": "Keepass 1/2 AES/Twofish without keyfile"
-				"example": "$keepass$*1*50000*0*375756b9e6c72891a8e5645a3338b8c8*82afc053e8e1a6cfa39adae4f5fe5e59f545a54d6956593d1709b39cacd7f796*c698fbfc7d1b71431d10611e2216ab21*24a63140f4eb3bfd7d59b7694eea38d1d93a43bc3af989755d2b326286c4d510*1*192*1a65072f436e9da0c9e832eca225a04ab78821b55d9f550860ade2ef8126a2c4050cf4d033374abd3dac6d0c5907c6cbb033643b203825c12e6c9853b5ac17a4809559fe723e01b4a2ab87cc83c8ba7ee4a757b8a0cf1674106f21f6675cba12064443d65436650df10ea0923c4cadfd4bfe341a6f4fa23a1a67f7d12a489fc5410ef6db9f6607905de491d3b3b915852a1b6c231c96366cbdee5ea9bd7f73ffd2f7a579215528ae1bf0ea540947ebfe39ca84bc6cbeded4f8e8fb6ed8f32dd5"
-				}
-			]
-		},
-		{
-			"regex": "^\$keepass\$\*2\*\d+\*\d+\*[0-9a-f]+\*[0-9a-f]+\*[0-9a-f]+\*[0-9a-f]+\*[0-9a-f]+\*\d+\*\d+\*[0-9a-f]+$",
-			"rAttack": " ",
-			"options":[
-				{
-				"id": 13400,
-				"description": "Keepass 1/2 AES/Twofish with keyfile"
-				"example": "$keepass$*1*50000*0*375756b9e6c72891a8e5645a3338b8c8*82afc053e8e1a6cfa39adae4f5fe5e59f545a54d6956593d1709b39cacd7f796*c698fbfc7d1b71431d10611e2216ab21*24a63140f4eb3bfd7d59b7694eea38d1d93a43bc3af989755d2b326286c4d510*1*192*1a65072f436e9da0c9e832eca225a04ab78821b55d9f550860ade2ef8126a2c4050cf4d033374abd3dac6d0c5907c6cbb033643b203825c12e6c9853b5ac17a4809559fe723e01b4a2ab87cc83c8ba7ee4a757b8a0cf1674106f21f6675cba12064443d65436650df10ea0923c4cadfd4bfe341a6f4fa23a1a67f7d12a489fc5410ef6db9f6607905de491d3b3b915852a1b6c231c96366cbdee5ea9bd7f73ffd2f7a579215528ae1bf0ea540947ebfe39ca84bc6cbeded4f8e8fb6ed8f32dd5"
+				"description": "KeePass 2 AES / without keyfile",
+				"example": "$keepass$*2*6000*222*a279e37c38b0124559a83fa452a0269d56dc4119a5866d18e76f1f3fd536d64d*7ec7a06bc975ea2ae7c8dcb99e826a308564849b6b25d858cbbc78475af3733f*d477c849bf2278b7a1f626c81e343553*38c8ec186141c2705f2bcb334a730933ed3b0ee11391e1100fbaf429f6c99078*1ada85fe78cf36ab0537562a787dd83e446f13cd3d9a60fd495003de3537b702"
 				}
 			]
 		},
@@ -1700,12 +1697,12 @@ var HashType:
 			"description": "PeopleSoft PS_TOKEN"
 		},
 		{
-			"regex": "\\$zip2\\$\*[0-9]{1}\*[0-9]{1}\*[0-9]{1}\*[a-f0-9]{16,32}\*[a-f0-9]{1,6}\*[a-f0-9]{1,6}\*[a-f0-9]+\*[a-f0-9]{20}\*\$\/zip2\$",
+			"regex": "^\\$zip2\\$\\*[0-9]{1}\\*[0-9]{1}\\*[0-9]{1}\\*[a-f0-9]{16,32}\\*[a-f0-9]{1,6}\\*[a-f0-9]{1,6}\\*[a-f0-9]+\\*[a-f0-9]{20}\\*\\$\\/zip2\\$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 13600,
-				"description": "WinZip"
+				"description": "WinZip",
 				"example": "$zip2$*0*3*0*e3222d3b65b5a2785b192d31e39ff9de*1320*e*19648c3e063c82a9ad3ef08ed833*3135c79ecb86cd6f48fc*$/zip2$"
 				}
 			]
@@ -1835,7 +1832,7 @@ var HashType:
 			"description": "LUKS 10"
 		},
 		{
-			"regex": "^\\$itunes_backup\\$\*[0-9]{1,2}\*[a-f0-9]{80}\*[0-9]{1,6}\*[a-f0-9]{40}\*[0-9]{0,10}\*[a-f0-9]{0,40}",
+			"regex": "^\\$itunes_backup\\$\\*[0-9]{1,2}\\*[a-f0-9]{80}\\*[0-9]{1,6}\\*[a-f0-9]{40}\\*[0-9]{0,10}\\*[a-f0-9]{0,40}",
 			"rAttack": " ",
 			"options":[
 				{
@@ -1859,12 +1856,12 @@ var HashType:
 			"description": "FileZilla Server >= 0.9.55"
 		},
 		{
-			"regex": "^\$sha1\$[0-9]+\$[a-z0-9\/.]{0,64}\$[a-z0-9\/.]{28}$",
+			"regex": "^\\$sha1\\$[0-9]+\\$[a-z0-9\\/.]{0,64}\\$[a-z0-9\\/.]{28}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 15100,
-				"description": "Juniper/NetBSD sha1crypt"
+				"description": "Juniper/NetBSD sha1crypt",
 				"example": "$sha1$15100$jiJDkz0E$E8C7RQAD3NetbSDz7puNAY.5Y2jr"
 				}
 			]
@@ -1895,7 +1892,7 @@ var HashType:
 			"options":[
 				{
 				"id": 15600,
-				"description": "Ethereum Wallet, PBKDF2-HMAC-SHA256"
+				"description": "Ethereum Wallet, PBKDF2-HMAC-SHA256",
 				"example": "$ethereum$p*262144*3238383137313130353438343737383736323437353437383831373034343735*06eae7ee0a4b9e8abc02c9990e3730827396e8531558ed15bb733faf12a44ce1*e6d5891d4f199d31ec434fe25d9ecc2530716bc3b36d5bdbc1fab7685dda3946"
 				},
 				{
@@ -1938,12 +1935,12 @@ var HashType:
 			"description": "JWT (JSON Web Token)"
 		},
 		{
-			"regex": "^\\$electrum\\$[1-3]\*[a-f0-9]{32,32}\*[a-f0-9]{32,32}$",
+			"regex": "^\\$electrum\\$[1-3]\\*[a-f0-9]{32,32}\\*[a-f0-9]{32,32}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 16600,
-				"description": "Electrum Wallet (Salt-Type 1-3)"
+				"description": "Electrum Wallet (Salt-Type 1-3)",
 				"example": "$electrum$1*44358283104603165383613672586868*c43a6632d9f59364f74c395a03d8c2ea"
 				}
 			]
@@ -1969,57 +1966,57 @@ var HashType:
 			"description": "GPG (AES-128/AES-256 (SHA-1($pass)))"
 		},
 		{
-			"regex": "^\\$pkzip2?\\$(1)\*[0-9]{1}\*[0-9]{1}\*[0-9a-f]{1,3}\*[0-9a-f]{1,8}\*[0-9a-f]{1,4}\*[0-9a-f]{1,8}\*[0-9a-f]{1,8}\*[0-9a-f]{1,8}\*(8)\*[0-9a-f]{1,8}(\*[0-9a-f]{1,8})?\*[0-9a-f]{1,8}\*[a-f0-9]+\*\$\/pkzip2?\$$",
+			"regex": "^\\$pkzip2?\\$(1)\\*[0-9]{1}\\*[0-9]{1}\\*[0-9a-f]{1,3}\\*[0-9a-f]{1,8}\\*[0-9a-f]{1,4}\\*[0-9a-f]{1,8}\\*[0-9a-f]{1,8}\\*[0-9a-f]{1,8}\\*(8)\\*[0-9a-f]{1,8}(\\*[0-9a-f]{1,8})?\\*[0-9a-f]{1,8}\\*[a-f0-9]+\\*\\$\\/pkzip2?\\$$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 17200,
-				"description": "PKZIP (Compressed)"
+				"description": "PKZIP (Compressed)",
 				"example": "$pkzip2$1*1*2*0*e3*1c5*eda7a8de*0*28*8*e3*eda7*5096*a9fc1f4e951c8fb3031a6f903e5f4e3211c8fdc4671547bf77f6f682afbfcc7475d83898985621a7af9bccd1349d1976500a68c48f630b7f22d7a0955524d768e34868880461335417ddd149c65a917c0eb0a4bf7224e24a1e04cf4ace5eef52205f4452e66ded937db9545f843a68b1e84a2e933cc05fb36d3db90e6c5faf1bee2249fdd06a7307849902a8bb24ec7e8a0886a4544ca47979a9dfeefe034bdfc5bd593904cfe9a5309dd199d337d3183f307c2cb39622549a5b9b8b485b7949a4803f63f67ca427a0640ad3793a519b2476c52198488e3e2e04cac202d624fb7d13c2*$/pkzip2$"
 				}
 			]
 		},
 		{
-			"regex": "^\\$pkzip2?\$(1)\*[0-9]{1}\*[0-9]{1}\*[0-9a-f]{1,8}\*[0-9a-f]{1,8}\*[0-9a-f]{1,8}\*[0-9a-f]{1,8}\*[0-9a-f]{1,8}\*[0-9a-f]{1,8}\*(0)\*[0-9a-f]{1,8}(\*[0-9a-f]{1,8})?\*[0-9a-f]{1,8}\*[a-f0-9]+\*\$\/pkzip2?\$$",
+			"regex": "^\\$pkzip2?\\$(1)\\*[0-9]{1}\\*[0-9]{1}\\*[0-9a-f]{1,8}\\*[0-9a-f]{1,8}\\*[0-9a-f]{1,8}\\*[0-9a-f]{1,8}\\*[0-9a-f]{1,8}\\*[0-9a-f]{1,8}\\*(0)\\*[0-9a-f]{1,8}(\\*[0-9a-f]{1,8})?\\*[0-9a-f]{1,8}\\*[a-f0-9]+\\*\\$\\/pkzip2?\\$$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 17210,
-				"description": "PKZIP (Uncompressed)"
+				"description": "PKZIP (Uncompressed)",
 				"example": "$pkzip2$1*1*2*0*1d1*1c5*eda7a8de*0*28*0*1d1*eda7*5096*1dea673da43d9fc7e2be1a1f4f664269fceb6cb88723a97408ae1fe07f774d31d1442ea8485081e63f919851ca0b7588d5e3442317fff19fe547a4ef97492ed75417c427eea3c4e146e16c100a2f8b6abd7e5988dc967e5a0e51f641401605d673630ea52ebb04da4b388489901656532c9aa474ca090dbac7cf8a21428d57b42a71da5f3d83fed927361e5d385ca8e480a6d42dea5b4bf497d3a24e79fc7be37c8d1721238cbe9e1ea3ae1eb91fc02aabdf33070d718d5105b70b3d7f3d2c28b3edd822e89a5abc0c8fee117c7fbfbfd4b4c8e130977b75cb0b1da080bfe1c0859e6483c42f459c8069d45a76220e046e6c2a2417392fd87e4aa4a2559eaab3baf78a77a1b94d8c8af16a977b4bb45e3da211838ad044f209428dba82666bf3d54d4eed82c64a9b3444a44746b9e398d0516a2596d84243b4a1d7e87d9843f38e45b6be67fd980107f3ad7b8453d87300e6c51ac9f5e3f6c3b702654440c543b1d808b62f7a313a83b31a6faaeedc2620de7057cd0df80f70346fe2d4dccc318f0b5ed128bcf0643e63d754bb05f53afb2b0fa90b34b538b2ad3648209dff587df4fa18698e4fa6d858ad44aa55d2bba3b08dfdedd3e28b8b7caf394d5d9d95e452c2ab1c836b9d74538c2f0d24b9b577*$/pkzip2$"
 				}
 			]
 		},
 		{
-			"regex": "^\\$pkzip2?\$([2-8])\*[0-9]{1}(\*[0-9]{1}\*[0-9a-f]{1,3}\*([^0*][0-9a-f]{0,2})\*[0-9a-f]{1,8}(\*[0-9a-f]{1,8})?\*[0-9a-f]{1,8}\*[0-9a-f]+)+\*(8)\*[0-9a-f]{1,8}(\*[0-9a-f]{1,8})?\*[0-9a-f]{1,8}\*[a-f0-9]+\*\$\/pkzip2?\$$",
+			"regex": "^\\$pkzip2?\\$([2-8])\\*[0-9]{1}(\\*[0-9]{1}\\*[0-9a-f]{1,3}\\*([^0*][0-9a-f]{0,2})\\*[0-9a-f]{1,8}(\\*[0-9a-f]{1,8})?\\*[0-9a-f]{1,8}\\*[0-9a-f]+)+\\*(8)\\*[0-9a-f]{1,8}(\\*[0-9a-f]{1,8})?\\*[0-9a-f]{1,8}\\*[a-f0-9]+\\*\\$\\/pkzip2?\\$$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 17220,
-				"description": "PKZIP (Compressed Multi-File)"
+				"description": "PKZIP (Compressed Multi-File)",
 				"example": "$pkzip2$3*1*1*0*8*24*a425*8827*d1730095cd829e245df04ebba6c52c0573d49d3bbeab6cb385b7fa8a28dcccd3098bfdd7*1*0*8*24*2a74*882a*51281ac874a60baedc375ca645888d29780e20d4076edd1e7154a99bde982152a736311f*2*0*e3*1c5*eda7a8de*0*29*8*e3*eda7*5096*1455781b59707f5151139e018bdcfeebfc89bc37e372883a7ec0670a5eafc622feb338f9b021b6601a674094898a91beac70e41e675f77702834ca6156111a1bf7361bc9f3715d77dfcdd626634c68354c6f2e5e0a7b1e1ce84a44e632d0f6e36019feeab92fb7eac9dda8df436e287aafece95d042059a1b27d533c5eab62c1c559af220dc432f2eb1a38a70f29e8f3cb5a207704274d1e305d7402180fd47e026522792f5113c52a116d5bb25b67074ffd6f4926b221555234aabddc69775335d592d5c7d22462b75de1259e8342a9ba71cb06223d13c7f51f13be2ad76352c3b8ed*$/pkzip2$"
 				}
 			]
 		},
 		{
-			"regex": "^\\$pkzip2?\$([2-8])\*[0-9]{1}(\*[0-9]{1}\*[0-9a-f]{1,8}\*([0-9a-f]{1,8})\*[0-9a-f]{1,8}(\*[0-9a-f]{1,8})?\*[0-9a-f]{1,8}\*[0-9a-f]+)+\*([08])\*[0-9a-f]{1,8}(\*[0-9a-f]{1,8})?\*[0-9a-f]{1,8}\*[a-f0-9]+\*\$\/pkzip2?\$$",
+			"regex": "^\\$pkzip2?\\$([2-8])\\*[0-9]{1}(\\*[0-9]{1}\\*[0-9a-f]{1,8}\\*([0-9a-f]{1,8})\\*[0-9a-f]{1,8}(\\*[0-9a-f]{1,8})?\\*[0-9a-f]{1,8}\\*[0-9a-f]+)+\\*([08])\\*[0-9a-f]{1,8}(\\*[0-9a-f]{1,8})?\\*[0-9a-f]{1,8}\\*[a-f0-9]+\\*\\$\\/pkzip2?\\$$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 17225,
-				"description": "PKZIP (Mixed Multi-File)"
+				"description": "PKZIP (Mixed Multi-File)",
 				"example": "$pkzip2$3*1*1*0*0*24*3e2c*3ef8*0619e9d17ff3f994065b99b1fa8aef41c056edf9fa4540919c109742dcb32f797fc90ce0*1*0*8*24*431a*3f26*18e2461c0dbad89bd9cc763067a020c89b5e16195b1ac5fa7fb13bd246d000b6833a2988*2*0*23*17*1e3c1a16*2e4*2f*0*23*1e3c*3f2d*54ea4dbc711026561485bbd191bf300ae24fa0997f3779b688cdad323985f8d3bb8b0c*$/pkzip2$"
 				}
 			]
 		},
 		{
-			"regex": "^\\$pkzip2?\$([2-8])\*[0-9]{1}(\*[0-9]{1}\*[0-9a-f]{1,3}\*[0-9a-f]{1,8}\*[0-9a-f]{1,8}(\*[0-9a-f]{1,8})?\*[0-9a-f]{1,8}\*[0-9a-f]+)+\*\$\/pkzip2?\$$",
+			"regex": "^\\$pkzip2?\\$([2-8])\\*[0-9]{1}(\\*[0-9]{1}\\*[0-9a-f]{1,3}\\*[0-9a-f]{1,8}\\*[0-9a-f]{1,8}(\\*[0-9a-f]{1,8})?\\*[0-9a-f]{1,8}\\*[0-9a-f]+)+\\*\\$\\/pkzip2?\\$$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 17230,
-				"description": "PKZIP (Compressed Multi-File Checksum-Only)"
-				"example": "	$pkzip2$8*1*1*0*8*24*a425*8827*3bd479d541019c2f32395046b8fbca7e1dca218b9b5414975be49942c3536298e9cc939e*1*0*8*24*2a74*882a*537af57c30fd9fd4b3eefa9ce55b6bff3bbfada237a7c1dace8ebf3bb0de107426211da3*1*0*8*24*2a74*882a*5f406b4858d3489fd4a6a6788798ac9b924b5d0ca8b8e5a6371739c9edcfd28c82f75316*1*0*8*24*2a74*882a*1843aca546b2ea68bd844d1e99d4f74d86417248eb48dd5e956270e42a331c18ea13f5ed*1*0*8*24*2a74*882a*aca3d16543bbfb2e5d2659f63802e0fa5b33e0a1f8ae47334019b4f0b6045d3d8eda3af1*1*0*8*24*2a74*882a*fbe0efc9e10ae1fc9b169bd060470bf3e39f09f8d83bebecd5216de02b81e35fe7e7b2f2*1*0*8*24*2a74*882a*537886dbabffbb7cac77deb01dc84760894524e6966183b4478a4ef56f0c657375a235a1*1*0*8*24*eda7*5096*40eb30ef1ddd9b77b894ed46abf199b480f1e5614fde510855f92ae7b8026a11f80e4d5f*$/pkzip2$"
+				"description": "PKZIP (Compressed Multi-File Checksum-Only)",
+				"example": "$pkzip2$8*1*1*0*8*24*a425*8827*3bd479d541019c2f32395046b8fbca7e1dca218b9b5414975be49942c3536298e9cc939e*1*0*8*24*2a74*882a*537af57c30fd9fd4b3eefa9ce55b6bff3bbfada237a7c1dace8ebf3bb0de107426211da3*1*0*8*24*2a74*882a*5f406b4858d3489fd4a6a6788798ac9b924b5d0ca8b8e5a6371739c9edcfd28c82f75316*1*0*8*24*2a74*882a*1843aca546b2ea68bd844d1e99d4f74d86417248eb48dd5e956270e42a331c18ea13f5ed*1*0*8*24*2a74*882a*aca3d16543bbfb2e5d2659f63802e0fa5b33e0a1f8ae47334019b4f0b6045d3d8eda3af1*1*0*8*24*2a74*882a*fbe0efc9e10ae1fc9b169bd060470bf3e39f09f8d83bebecd5216de02b81e35fe7e7b2f2*1*0*8*24*2a74*882a*537886dbabffbb7cac77deb01dc84760894524e6966183b4478a4ef56f0c657375a235a1*1*0*8*24*eda7*5096*40eb30ef1ddd9b77b894ed46abf199b480f1e5614fde510855f92ae7b8026a11f80e4d5f*$/pkzip2$"
 				}
 			]
 		},
@@ -2027,9 +2024,14 @@ var HashType:
 			"regex": "^[a-f0-9]{56}$",
 			"rAttack": " ",
 			"options":[
+        {
+          "id": 1300,
+          "description": "SHA-224",
+          "example": "e4fa1555ad877bf0ec455483371867200eee89550a93eff2f95a6198"
+        },
 				{
 				"id": 17300,
-				"description": "SHA3-224"
+				"description": "SHA3-224",
 				"example": "412ef78534ba6ab0e9b1607d3e9767a25c1ea9d5e83176b4c2817a6c"
 				},
 				{
@@ -2049,19 +2051,8 @@ var HashType:
 			"options":[
 				{
 				"id": 17800,
-				"description": "Keccak-256"
+				"description": "Keccak-256",
 				"example": "203f88777f18bb4ee1226627b547808f38d90d3e106262b5de9ca943b57137b6"
-				}
-			]
-		},
-		{
-			"regex": "^[a-f0-9]{96}$",
-			"rAttack": " ",
-			"options":[
-				{
-				"id": 17900,
-				"description": "Keccak-384"
-				"example": "5804b7ada5806ba79540100e9a7ef493654ff2a21d94d4f2ce4bf69abda5d94bf03701fe9525a15dfdc625bfbd769701"
 				}
 			]
 		},
@@ -2074,12 +2065,12 @@ var HashType:
 			"description": "TOTP (HMAC-SHA1)"
 		},
 		{
-			"regex": "^\$krb5asrep\$23\$[^:]+:[a-f0-9]{32,32}\$[a-f0-9]{64,40960}$",
+			"regex": "^\\$krb5asrep\\$23\\$[^:]+:[a-f0-9]{32,32}\\$[a-f0-9]{64,40960}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 18200,
-				"description": "Kerberos 5 AS-REP etype 23"
+				"description": "Kerberos 5 AS-REP etype 23",
 				"example": "$krb5asrep$23$user@domain.com:3e156ada591263b8aab0965f5aebd837$007497cb51b6c8116d6407a782ea0e1c5402b17db7afa6b05a6d30ed164a9933c754d720e279c6c573679bd27128fe77e5fea1f72334c1193c8ff0b370fadc6368bf2d49bbfdba4c5dccab95e8c8ebfdc75f438a0797dbfb2f8a1a5f4c423f9bfc1fea483342a11bd56a216f4d5158ccc4b224b52894fadfba3957dfe4b6b8f5f9f9fe422811a314768673e0c924340b8ccb84775ce9defaa3baa0910b676ad0036d13032b0dd94e3b13903cc738a7b6d00b0b3c210d1f972a6c7cae9bd3c959acf7565be528fc179118f28c679f6deeee1456f0781eb8154e18e49cb27b64bf74cd7112a0ebae2102ac"
 				}
 			]
@@ -2089,12 +2080,12 @@ var HashType:
 			"description": "Apple File System (APFS)"
 		},
 		{
-			"regex": "^\$odf\$\*1\*1\*100000\*32\*[a-f0-9]{64}\*16\*[a-f0-9]{32}\*16\*[a-f0-9]{32}\*0\*[a-f0-9]{2048}$",
+			"regex": "^\\$odf\\$\\*1\\*1\\*100000\\*32\\*[a-f0-9]{64}\\*16\\*[a-f0-9]{32}\\*16\\*[a-f0-9]{32}\\*0\\*[a-f0-9]{2048}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 18400,
-				"description": "Open Document Format (ODF) 1.2 (SHA-256, AES)"
+				"description": "Open Document Format (ODF) 1.2 (SHA-256, AES)",
 				"example": "$odf$*1*1*100000*32*751854d8b90731ce0579f96bea6f0d4ac2fb2f546b31f1b6af9a5f66952a0bf4*16*2185a966155baa9e2fb597298febecbc*16*c18eaae34bcbbe9119be017fe5f8b52d*0*051e0f1ce0e866f2b771029e03a6c7119aad132af54c4e45824f16f61f357a40407ab82744fe6370c7b2346075fcd4c2e58ab244411b3ab1d532a46e2321599ef13c3d3472fc2f14d480d8c33215e473da67f90540279d3ef1f62dde314fa222796046e496c951235ddf88aa754620b7810d22ebc8835c90dce9276946f52b8ea7d95d2f86e4cc725366a8b3edacc2ce88518e535991a5f84d5ea8795dc02bfb731b5f202ecaf7d4b245d928c4248709fcdf3fba2acf1a08be0c1eee7dbeda07e8c3a6983565635e99952b8ad79d31c965f245ae90b5cc3dba6387898c66fa35cad9ac9595c41b62e68efcdd73185b38e220cf004269b77ec6974474b03b7569afc3b503a2bf8b2d035756f3f4cb880d9ba815e5c944508a0bde214076c35bf0e0814a96d21ccaa744c9056948ed935209f5c7933841d2ede3d28dd84da89d477d4a0041ce6d8ddab891d929340db6daa921d69b46fd5aee306d0bcef88c38acbb495d0466df7e2f744e3d10201081215c02db5dd479a4cda15a3338969c7baec9d3d2c378a8dd30449319b149dc3b4e7f00996a59fcb5f243d0df2cbaf749241033f7865aefa960adfeb8ebf205b270f90b1f82c34f80d5a8a0db7aec89972a32f5daa2a73c5895d1fced01b3ab8e576bd2630eff01cad97781f4966d4b528e1b15f011f28ae907a352073c96b203adc7742d2b79b2e2f440b17e7856ae119e08d15d8bdf951f6d4a3f9b516da2d9a8f9dd93488f8e0119f3da19138ab787f0d7098a652cccd914aa0ff81d375bd6a5a165acc936f591639059287975cfc3ca4342e5f9501b3249a76d14e56d6d56b319e036bc0449ac7b5afa24ffbea11babed8183edf8d4fdca1c3f0d23bfd4a02797627d556634f1a9304e03737604bd86f6b5a26aa687d6df73383e0f7dfe62a131e8dbb8c3f4f13d24857dd29d76984eac6c45df7428fc79323ffa1f4e7962d705df74320141ed1f16d1ad483b872168df60315ffadbfa1b7f4afaed8a0017421bf5e05348cb5c707a5e852d6fee6077ec1c33bc707bcd97b7701ee05a03d6fa78b0d31c8c97ea16e0edf434961bd5cc7cbb7eb2553730f0405c9bd21cee09b3f7c1bc57779fdfc15f3935985737a1b522004c4436b631a39a66e8577a03f5020e6aa41952c0662c8c57f66caa483b47af38b8cb5d457245fd3241749e17433e6f929233e8862d7c584111b1991b2d6e94278e7e6e1908cee5a83d94c78b75a84a695d25aeb9fdde72174fe6dd75e8d406671f44892a385a4a1e249f61ebc993e985607423a0a5742e668d52c1ebf5cecae7c2b7908f4627b92ec49354a9ccff8cb5763ad074a00e65a485a41bf4c25ce7e6fae49358a58547b1c0ca79713e297310c0a367c3de196f1dd685ca4be643bdf1e4f6b034211d020557e37a3b6614d061010b4a3416b6b279728c245d3322"
 				}
 			]
@@ -2116,12 +2107,12 @@ var HashType:
 			"description": "Blockchain, My Wallet, Second Password (SHA256)"
 		},
 		{
-			"regex": "\\$ab\\$[0-9]{1}\*[0-9]{1}\*[0-9]{1,6}\*[a-f0-9]{128}\*[a-f0-9]{128}\*[a-f0-9]{32}\*[a-f0-9]{192}",
+			"regex": "^\\$ab\\$[0-9]{1}\\*[0-9]{1}\\*[0-9]{1,6}\\*[a-f0-9]{128}\\*[a-f0-9]{128}\\*[a-f0-9]{32}\\*[a-f0-9]{192}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 18900,
-				"description": "Android Backup"
+				"description": "Android Backup",
 				"example": "$ab$5*0*10000*b8900e4885ff9cad8f01ee1957a43bd633fea12491440514ae27aa83f2f5c006ec7e7fa0bce040add619919b4eb60608304b7d571a2ed87fd58c9ad6bc5fcf4c*7d254d93e16be9312fb1ccbfc6265c40cb0c5eab7b605a95a116e2383fb1cf12b688223f96221dcd2bf5410d4ca6f90e0789ee00157fa91658b42665d6b6844c*fc9f6be604d1c59ac32664ec2c5b9b30*00c4972149af3adcc235899e9d20611ea6e8de2212afcb9fcfefde7e35b691c2d0994eb47e4f9a260526ba47f4caea71af9c7fadcd5685d50126276f6acdd59966528b13ccc26036a0eaba2f2451aa64b05766d0edd03c988dcf87e2a9eec52d"
 				}
 			]
@@ -2147,34 +2138,34 @@ var HashType:
 			"description": "Ruby on Rails Restful-Authentication"
 		},
 		{
-			"regex": "^\$krb5tgs\$17\$[^$]{1,512}\$[^$]{1,512}\$[^$]{1,4}?\$?[a-f0-9]{1,32}\$[a-f0-9]{64,40960}$",
+			"regex": "^\\$krb5tgs\\$17\\$[^$]{1,512}\\$[^$]{1,512}\\$[^$]{1,4}?\\$?[a-f0-9]{1,32}\\$[a-f0-9]{64,40960}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 19600,
-				"description": "Kerberos 5 TGS-REP etype 17 (AES128-CTS-HMAC-SHA1-96)"
+				"description": "Kerberos 5 TGS-REP etype 17 (AES128-CTS-HMAC-SHA1-96)",
 				"example": "$krb5tgs$17$user$realm$ae8434177efd09be5bc2eff8$90b4ce5b266821adc26c64f71958a475cf9348fce65096190be04f8430c4e0d554c86dd7ad29c275f9e8f15d2dab4565a3d6e21e449dc2f88e52ea0402c7170ba74f4af037c5d7f8db6d53018a564ab590fc23aa1134788bcc4a55f69ec13c0a083291a96b41bffb978f5a160b7edc828382d11aacd89b5a1bfa710b0e591b190bff9062eace4d26187777db358e70efd26df9c9312dbeef20b1ee0d823d4e71b8f1d00d91ea017459c27c32dc20e451ea6278be63cdd512ce656357c942b95438228e"
 				}
 			]
 		},
 		{
-			"regex": "^\$krb5tgs\$18\$[^$]{1,512}\$[^$]{1,512}\$[^$]{1,4}?\$?[a-f0-9]{1,32}\$[a-f0-9]{64,40960}",
+			"regex": "^\\$krb5tgs\\$18\\$[^$]{1,512}\\$[^$]{1,512}\\$[^$]{1,4}?\\$?[a-f0-9]{1,32}\\$[a-f0-9]{64,40960}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 19700,
-				"description": "Kerberos 5 TGS-REP etype 18 (AES256-CTS-HMAC-SHA1-96)"
+				"description": "Kerberos 5 TGS-REP etype 18 (AES256-CTS-HMAC-SHA1-96)",
 				"example": "$krb5tgs$18$user$realm$8efd91bb01cc69dd07e46009$7352410d6aafd72c64972a66058b02aa1c28ac580ba41137d5a170467f06f17faf5dfb3f95ecf4fad74821fdc7e63a3195573f45f962f86942cb24255e544ad8d05178d560f683a3f59ce94e82c8e724a3af0160be549b472dd83e6b80733ad349973885e9082617294c6cbbea92349671883eaf068d7f5dcfc0405d97fda27435082b82b24f3be27f06c19354bf32066933312c770424eb6143674756243c1bde78ee3294792dcc49008a1b54f32ec5d5695f899946d42a67ce2fb1c227cb1d2004c0"
 				}
 			]
 		},
 		{
-			"regex": "^\$krb5pa\$17\$[^$]{1,512}\$[^$]{1,512}\$[a-f0-9]{104,112}$",
+			"regex": "^\\$krb5pa\\$17\\$[^$]{1,512}\\$[^$]{1,512}\\$[a-f0-9]{104,112}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 19800,
-				"description": "Kerberos 5, etype 17, Pre-Auth"
+				"description": "Kerberos 5, etype 17, Pre-Auth",
 				"example": "$krb5pa$17$hashcat$HASHCATDOMAIN.COM$a17776abe5383236c58582f515843e029ecbff43706d177651b7b6cdb2713b17597ddb35b1c9c470c281589fd1d51cca125414d19e40e333"
 				}
 			]
@@ -2185,7 +2176,7 @@ var HashType:
 			"options":[
 				{
 				"id": 19900,
-				"description": "Kerberos 5, etype 18, Pre-Auth"
+				"description": "Kerberos 5, etype 18, Pre-Auth",
 				"example": "$krb5pa$18$hashcat$HASHCATDOMAIN.COM$96c289009b05181bfd32062962740b1b1ce5f74eb12e0266cde74e81094661addab08c0c1a178882c91a0ed89ae4e0e68d2820b9cce69770"
 				}
 			]
@@ -2208,29 +2199,29 @@ var HashType:
 			"options":[
 				{
 				"id": 20200,
-				"description": "Python passlib pbkdf2-sha512"
+				"description": "Python passlib pbkdf2-sha512",
 				"example": "$pbkdf2-sha512$25000$LyWE0HrP2RsjZCxlDGFMKQ$1vC5Ohk2mCS9b6akqsEfgeb4l74SF8XjH.SljXf3dMLHdlY1GK9ojcCKts6/asR4aPqBmk74nCDddU3tvSCJvw"
 				}
 			]
 		},
 		{
-			"regex": "^\$pbkdf2-sha256\$[0-9]+\$[a-z0-9\/.]+\$[a-z0-9\/.]{43}$",
+			"regex": "^\\$pbkdf2-sha256\\$[0-9]+\\$[a-z0-9\\/.]+\\$[a-z0-9\\/.]{43}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 20300,
-				"description": "Python passlib pbkdf2-sha256"
+				"description": "Python passlib pbkdf2-sha256",
 				"example": "$pbkdf2-sha256$29000$x9h7j/Ge8x6DMEao1VqrdQ$kra3R1wEnY8mPdDWOpTqOTINaAmZvRMcYd8u5OBQP9A"
 				}
 			]
 		},
 		{
-			"regex": "^\$pbkdf2(-sha1)?\$[0-9]+\$[a-z0-9\/.]+\$[a-z0-9\/.]{27}$",
+			"regex": "^\\$pbkdf2(-sha1)?\\$[0-9]+\\$[a-z0-9\\/.]+\\$[a-z0-9\\/.]{27}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 20400,
-				"description": "Python passlib pbkdf2-sha1"
+				"description": "Python passlib pbkdf2-sha1",
 				"example": "$pbkdf2$131000$r5WythYixPgfQ2jt3buXcg$8Kdr.QQEOaZIXNOrrru36I/.6Po"
 				}
 			]
@@ -2260,7 +2251,7 @@ var HashType:
 			"description": "sha256(sha256($pass).$salt)"
 		},
 		{
-			"regex": "^\$sha\$[a-z0-9]{1,16}\$([a-f0-9]{32}|[a-f0-9]{40}|[a-f0-9]{64}|[a-f0-9]{128}|[a-f0-9]{140})$",
+			"regex": "^\\$SHA\\$[a-z0-9]{1,16}\\$([a-f0-9]{32}|[a-f0-9]{40}|[a-f0-9]{64}|[a-f0-9]{128}|[a-f0-9]{140})$",
 			"rAttack": " ",
 			"options":[
 				{
@@ -2319,23 +2310,23 @@ var HashType:
 			"description": "Web2py pbkdf2-sha512"
 		},
 		{
-			"regex": "^\\$electrum\\$4\*[a-f0-9]{1,66}\*[a-f0-9]{128,32768}\*[a-f0-9]{64,64}$",
+			"regex": "^\\$electrum\\$4\\*[a-f0-9]{1,66}\\*[a-f0-9]{128,32768}\\*[a-f0-9]{64,64}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 21700,
-				"description": "Electrum Wallet (Salt-Type 4)"
+				"description": "Electrum Wallet (Salt-Type 4)",
 				"example": "$electrum$4*03eae309d8bda5dcbddaae8145469193152763894b7260a6c4ba181b3ac2ed5653*8c594086a64dc87a9c1f8a69f646e31e8d3182c3c722def4427aa20684776ac26092c6f60bf2762e27adfa93fe1e952dcb8d6362224b9a371953aa3a2edb596ce5eb4c0879c4353f2cc515ec6c9e7a6defa26c5df346d18a62e9d40fcc606bc8c34322bf2212f77770a683788db0baf4cb43595c2a27fe5ff8bdcb1fd915bcd725149d8ee8f14c71635fecb04da5dde97584f4581ceb7d907dceed80ae5daa8352dda20b25fd6001e99a96b7cf839a36cd3f5656304e6998c18e03dd2fb720cb41386c52910c9cb83272c3d50f3a6ff362ab8389b0c21c75133c971df0a75b331796371b060b32fe1673f4a041d7ae08bbdeffb45d706eaf65f99573c07972701c97766b4d7a8a03bba0f885eb3845dfd9152286e1de1f93e25ce04c54712509166dda80a84c2d34652f68e6c01e662f8b1cc7c15103a4502c29332a4fdbdda470c875809e15aab3f2fcb061ee96992ad7e8ab9da88203e35f47d6e88b07a13b0e70ef76de3be20dc06facbddc1e47206b16b44573f57396265116b4d243e77d1c98bc2b28aa3ec0f8d959764a54ecdd03d8360ff2823577fe2183e618aac15b30c1d20986841e3d83c0bfabcedb7c27ddc436eb7113db927e0beae7522b04566631a090b214660152a4f4a90e19356e66ee7309a0671b2e7bfde82667538d193fc7e397442052c6c611b6bf0a04f629a1dc7fa9eb44bfad1bfc6a0bce9f0564c3b483737e447720b7fd038c9a961a25e9594b76bf8c8071c83fcacd689c7469f698ee4aee4d4f626a73e21ce4967e705e4d83e1145b4260330367d8341c84723a1b02567ffbab26aac3afd1079887b4391f05d09780fc65f8b4f68cd51391c06593919d7eafd0775f83045b8f5c2e59cef902ff500654ea29b7623c7594ab2cc0e05ffe3f10abc46c9c5dac824673c307dcbff5bc5f3774141ff99f6a34ec4dd8a58d154a1c72636a2422b8fafdef399dec350d2b91947448582d52291f2261d264d29399ae3c92dc61769a49224af9e7c98d74190f93eb49a44db7587c1a2afb5e1a4bec5cdeb8ad2aac9728d5ae95600c52e9f063c11cdb32b7c1d8435ce76fcf1fa562bd38f14bf6c303c70fb373d951b8a691ab793f12c0f3336d6191378bccaed32923bba81868148f029e3d5712a2fb9f610997549710716db37f7400690c8dfbed12ff0a683d8e4d0079b380e2fd856eeafb8c6eedfac8fb54dacd6bd8a96e9f8d23ea87252c1a7c2b53efc6e6aa1f0cc30fbaaf68ee7d46666afc15856669cd9baebf9397ff9f322cce5285e68a985f3b6aadce5e8f14e9f9dd16764bc4e9f62168aa265d8634ab706ed40b0809023f141c36717bd6ccef9ec6aa6bfd2d00bda9375c2fee9ebba49590a166*1b0997cf64bb2c2ff88cb87bcacd9729d404bd46db18117c20d94e67c946fedc"
 				}
 			]
 		},
 		{
-			"regex": "^\\$electrum\\$5\*[a-f0-9]{66,66}\*[a-f0-9]{2048,2048}\*[a-f0-9]{64,64}$",
+			"regex": "^\\$electrum\\$5\\*[a-f0-9]{66,66}\\*[a-f0-9]{2048,2048}\\*[a-f0-9]{64,64}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 21800,
-				"description": "Electrum Wallet (Salt-Type 5)"
+				"description": "Electrum Wallet (Salt-Type 5)",
 				"example": "$electrum$5*02170fee7c35f1ef3b229edc90fbd0793b688a0d6f41137a97aab2343d315cce16*94cf72d8f5d774932b414a3344984859e43721268d2eb35fa531de5a2fc7024b463c730a54f4f46229dd9fede5034b19ac415c2916e9c16b02094f845795df0c397ff76d597886b1f9e014ad1a8f64a3f617d9900aa645b3ba86f16ce542251fc22c41d93fa6bc118be96d9582917e19d2a299743331804cfc7ce2c035367b4cbcfb70adfb1e10a0f2795769f2165d8fd13daa8b45eeac495b5b63e91a87f63b42e483f84a881e49adecacf6519cb564694b42dd9fe80fcbc6cdb63cf5ae33f35255266f5c2524dd93d3cc15eba0f2ccdc3c109cc2d7e8f711b8b440f168caf8b005e8bcdfe694148e94a04d2a738f09349a96600bd8e8edae793b26ebae231022f24e96cb158db141ac40400a9e9ef099e673cfe017281537c57f82fb45c62bdb64462235a6eefb594961d5eb2c46537958e4d04250804c6e9f343ab7a0db07af6b8a9d1a6c5cfcd311b8fb8383ac9ed9d98d427d526c2f517fc97473bd87cb59899bd0e8fb8c57fa0f7e0d53daa57c972cf92764af4b1725a5fb8f504b663ec519731929b3caaa793d8ee74293eee27d0e208a60e26290bc546e6fa9ed865076e13febfea249729218c1b5752e912055fbf993fbac5df2cca2b37c5e0f9c30789858ceeb3c482a8db123966775aeed2eee2fc34efb160d164929f51589bff748ca773f38978bff3508d5a7591fb2d2795df983504a788071f469d78c88fd7899cabbc5804f458653d0206b82771a59522e1fa794d7de1536c51a437f5d6df5efd6654678e5794ca429b5752e1103340ed80786f1e9da7f5b39af628b2212e4d88cd36b8a7136d50a6b6e275ab406ba7c57cc70d77d01c4c16e9363901164fa92dc9e9b99219d5376f24862e775968605001e71b000e2c7123b4b43f3ca40db17efd729388782e46e64d43ccb947db4eb1473ff1a3836b74fe312cd1a33b73b8b8d80c087088932277773c329f2f66a01d6b3fc1e651c56959ebbed7b14a21b977f3acdedf1a0d98d519a74b50c39b3052d840106da4145345d86ec0461cddafacc2a4f0dd646457ad05bf04dcbcc80516a5c5ed14d2d639a70e77b686f19cbfb63f546d81ae19cc8ba35cce3f3b5b9602df25b678e14411fecec87b8347f5047513df415c6b1a3d39871a6bcb0f67d9cf8311596deae45fd1d84a04fd58f1fd55c5156b7309af09094c99a53674809cb87a45f95a2d69f9997a38085519cb4e056f9efd56672a2c1fe927d5ea8eec25b8aff6e56f9a2310f1a481daf407b8adf16201da267c59973920fd21bb087b88123ef98709839d6a3ee34efb8ccd5c15ed0e46cff3172682769531164b66c8689c35a26299dd26d09233d1f64f9667474141cf9c6a6de7f2bc52c3bb44cfe679ff4b912c06df406283836b3581773cb76d375304f46239da5996594a8d03b14c02f1b35a432dc44a96331242ae31174*33a7ee59d6d17ed1ee99dc0a71771227e6f3734b17ba36eb589bdced56244135"
 				}
 			]
@@ -2349,12 +2340,12 @@ var HashType:
 			"description": "WPA-PMK-PMKID+EAPOL"
 		},
 		{
-			"regex": "^\\$bitlocker\\$[0-9]\$[0-9]{2}\$[a-f0-9]{32}\$[a-f0-9]{7}\$[a-f0-9]{2}\$[a-f0-9]{24}\$[a-f0-9]{2}\$[a-f0-9]{120}",
+			"regex": "^\\$bitlocker\\$[0-9]\\$[0-9]{2}\\$[a-f0-9]{32}\\$[a-f0-9]{7}\\$[a-f0-9]{2}\\$[a-f0-9]{24}\\$[a-f0-9]{2}\\$[a-f0-9]{120}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 22100,
-				"description": "BitLocker"
+				"description": "BitLocker",
 				"example": "$bitlocker$1$16$6f972989ddc209f1eccf07313a7266a2$1048576$12$3a33a8eaff5e6f81d907b591$60$316b0f6d4cb445fb056f0e3e0633c413526ff4481bbf588917b70a4e8f8075f5ceb45958a800b42cb7ff9b7f5e17c6145bf8561ea86f52d3592059fb"
 				}
 			]
@@ -2368,12 +2359,12 @@ var HashType:
 			"description": "sha256($salt.$pass.$salt)"
 		},
 		{
-			"regex": "^\\$telegram\$[a-f0-9*]{99}",
+			"regex": "^\\$telegram\\$[a-f0-9*]{99}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 22301,
-				"description": "Telegram client app passcode (SHA256)"
+				"description": "Telegram client app passcode (SHA256)",
 				"example": "$telegram$0*518c001aeb3b4ae96c6173be4cebe60a85f67b1e087b045935849e2f815b5e41*25184098058621950709328221838128"
 				}
 			]
@@ -2407,12 +2398,12 @@ var HashType:
 			"description": "RSA/DSA/EC/OPENSSH Private Keys ($1, $3$)"
 		},
 		{
-			"regex": "^\\$sshng\$4\$16\$[0-9]{32}\$1232\$[a-f0-9]{2464}$",
+			"regex": "^\\$sshng\\$4\\$16\\$[0-9]{32}\\$1232\\$[a-f0-9]{2464}$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 22941,
-				"description": "RSA/DSA/EC/OPENSSH Private Keys ($4$)"
+				"description": "RSA/DSA/EC/OPENSSH Private Keys ($4$)",
 				"example": "$sshng$4$16$01684556100059289727957814500256$1232$b04d45fdfdf02a9ca91cbc9c53f9e59956822c72c718929aca9251cffd9ac48e48c490b7b6b6043df3a70cf5fbcc2f358b0e8b70d39155c93032b0fd79ec68f6cb8b7de8422ec95cb027a9eaacc453b0b99b5d3f8d6771d6b95b0242a1d8664de8598e8d6b6d6ee360fda5ae0106061a79e88ef2eef98a000b638f8fdc367155ec2d1120b366f74f0933efe5d174e7107db29dc8fb592b22b9837114415d78036c116b2d31b2080c7159442f2d1a61900f5ae4913548c8e7fc716dd4f812bc7e57b2dd5d3f56c6ae0e91c3bc2897d9341cb282d86b915d43cf20ad16fbd2056104529576142354a430281f5e458923ef8014ff9950351798bfcbbcb66cb98bb2cccea48c134b0e05e978d4308c82617869b207f0ed7b227893f2cdde2d6b6a98246de8a2494d5e018a84724780fbe8d1fa91c922908d18ccffbbbbc81e6578fe8bb5c8596a8cf689f3f12b810dee95887e12439e487313229a37913e3cd12bddba3bac94fab03aad8607f6034fa87f7a7a2ac74d0c0a6e6bc905f569221861e1e388cf379cda799d7b56eac58440d17fe97fa68a537d34317376c00dfa9a99e04725a0d2fcf27ee50463e725813c96fe2eed16de59e8a6944d903e11f7923d57ae6d4a1f8085ce19f4d180f13027806f3965fdf875ea092f103f28a5f42f356254958fa7eb0bca2389a6ad4e305640cc64501e6b16330b063037b1cf6fe64131f308e50d9d1dc687ffa487681941084ff21cb54c1b5903b7a78d9913595fa0124f1dde49b1bee2ea83837efe34e2cd6051a4a7a1437eaa84ad332ffd9946b952ed634948789d9541820a0f9c6f44ab6d3cad645743c76c54e79bfdc4fb8e43a0fd7d871baea98e78131bc530b6d736fa1ec5ac70438609497ab2ff8d516146b4b1b3488791cb84dccc0096b570e2ffb3a93cccefec0af7ce616a64466d2d4196941ba9e051dc00ed05e963a7b4a286973ee0b5df4fd92dfb0b229b10730d454832d945c6a596862212d109ce78ac14ffb5d775548b2f3e2ae4be059a24465cc10b7c810f8cc3db7cb327619cc104ebea575ac097d20701dc623f7aa893b785cc20851f3972390e00ab3355655f7d5bea323832c17d8e078e917843ef7fcaca349366092b6743bf7511d5fceb2d992fbd18574be532365be41ad80a114704a64a7aefdf98c907aa10e4d5c547dd8d21647ea9d5c975fe1b24525d94c3eb03e071742fd5f09f22da669b649fac9f87d8cf16c475d006421f69a9b2d5c4037ccc9bf9f0aa0e7df8ac5fcb0d88a528833f9640799026d2fe8694fa1a0307c5f24002172464b290bedd85667800edbff2f1de7119e5b65730a24922e42d53ef28b0a59817a298426dc72e29a85e59e3d777b19eb934bcd620a903aff72927cdbe7253f77694ab0ef970378b4347f6166ca2a40b23cc31970f0cbefd08d2d72bf2c3961d67c73a5a24f75a65e540dc5735520b0d81250af8980ddca3e22a9b25773afd27c76e564ff437d4208df14d802f1d0848390f45924cdd6ced3c9ffb726bb358b334ea0e0481acdd103f2db05f508f62588621d0b8fa274a69eba0d418d85086d9139391f7e28dc54fe9bab801f1fea854f27ad2e5907ae6f9a4b4527d16a8af3c8cbe2c6d82209dc6c7da060da58294eb00380598330c4c19d45581d09e04c0153a8559700b3a8ceab9b8124f84d397356cd9e38e3916afc1f63a3e1dfbc7df8dd0a7d0704e38a0ea523dfc2b9defd5"
 				}
 			]
@@ -2422,34 +2413,34 @@ var HashType:
 			"description": "RSA/DSA/EC/OPENSSH Private Keys ($5$)"
 		},
 		{
-			"regex": "^\\$zip3\\$\*[0-9]\*[0-9]\*128\*[0-9]\*[a-f0-9]{0,32}\*[a-f0-9]{288}\*[0-9]\*[0-9]\*[0-9]\*[^\s]{0,64}",
+			"regex": "^\\$zip3\\$\\*[0-9]\\*[0-9]\\*128\\*[0-9]\\*[a-f0-9]{0,32}\\*[a-f0-9]{288}\\*[0-9]\\*[0-9]\\*[0-9]\\*[^\\s]{0,64}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 23001,
-				"description": "SecureZIP AES-128"
+				"description": "SecureZIP AES-128",
 				"example": "$zip3$*0*1*128*0*b4630625c92b6e7848f6fd86*df2f62611b3d02d2c7e05a48dad57c7d93b0bac1362261ab533807afb69db856676aa6e350320130b5cbf27c55a48c0f75739654ac312f1cf5c37149557fc88a92c7e3dde8d23edd2b839036e88092a708b7e818bf1b6de92f0efb5cce184cceb11db6b3ca0527d0bdf1f1137ee6660d9890928cd80542ac1f439515519147c14d965b5ba107c6227f971e3e115170bf*0*0*0*file.txt"
 				}
 			]
 		},
 		{
-			"regex": "^\\$zip3\\$\*[0-9]\*[0-9]\*192\*[0-9]\*[a-f0-9]{0,32}\*[a-f0-9]{288}\*[0-9]\*[0-9]\*[0-9]\*[^\s]{0,64}",
+			"regex": "^\\$zip3\\$\\*[0-9]\\*[0-9]\\*192\\*[0-9]\\*[a-f0-9]{0,32}\\*[a-f0-9]{288}\\*[0-9]\\*[0-9]\\*[0-9]\\*[^\\s]{0,64}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 23002,
-				"description": "SecureZIP AES-192"
+				"description": "SecureZIP AES-192",
 				"example": "$zip3$*0*1*192*0*53ff2de8c280778e1e0ab997*603eb37dbab9ea109e2c405e37d8cae1ec89e1e0d0b9ce5bf55d1b571c343b6a3df35fe381c30249cb0738a9b956ba8e52dfc5552894296300446a771032776c811ff8a71d9bb3c4d6c37016c027e41fea2d157d5b0ce17804b1d7c1606b7c1121d37851bd705e001f2cd755bbf305966d129a17c1d48ff8e87cfa41f479090cd456527db7d1d43f9020ad8e73f851a5*0*0*0*file.txt"
 				}
 			]
 		},
 		{
-			"regex": "^\\$zip3\\$\*[0-9]\*[0-9]\*256\*[0-9]\*[a-f0-9]{0,32}\*[a-f0-9]{288}\*[0-9]\*[0-9]\*[0-9]\*[^\s]{0,64}",
+			"regex": "^\\$zip3\\$\\*[0-9]\\*[0-9]\\*256\\*[0-9]\\*[a-f0-9]{0,32}\\*[a-f0-9]{288}\\*[0-9]\\*[0-9]\\*[0-9]\\*[^\\s]{0,64}",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 23003,
-				"description": "SecureZIP AES-256"
+				"description": "SecureZIP AES-256",
 				"example": "$zip3$*0*1*256*0*39bff47df6152a0214d7a967*65ff418ffb3b1198cccdef0327c03750f328d6dd5287e00e4c467f33b92a6ef40a74bb11b5afad61a6c3c9b279d8bd7961e96af7b470c36fc186fd3cfe059107021c9dea0cf206692f727eeca71f18f5b0b6ee1f702b648bba01aa21c7b7f3f0f7d547838aad46868155a04214f22feef7b31d7a15e1abe6dba5e569c62ee640783bb4a54054c2c69e93ece9f1a2af9d*0*0*0*file.txt"
 				}
 			]
@@ -2479,24 +2470,24 @@ var HashType:
 			"description": "AxCrypt 2 AES-256"
 		},
 		{
-			"regex": "^\$sshng\$4\$16\$[0-9]{32}\$1232\$[a-f0-9]{2464}$",
+			"regex": "^\\$RAR3\\$\\*(1)\\*[0-9a-f]{1,16}\\*[0-9a-f]{1,8}\\*[0-9a-f]{1,16}\\*[0-9a-f]{1,16}\\*[01]\\*([0-9a-f]+|[^*]{1,64}\\*[0-9a-f]{1,16})\\*30$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 23700,
-				"description": "RAR3-p (Uncompressed)"
+				"description": "RAR3-p (Uncompressed)",
 				"example": "$RAR3$*1*e54a73729887cb53*49b0a846*16*14*1*34620bcca8176642a210b1051901921e*30"
 				}
 			]
 		},
 		{
-			"regex": "^\$RAR3\$\*(1)\*[0-9a-f]{1,16}\*[0-9a-f]{1,8}\*[0-9a-f]{1,16}\*[0-9a-f]{1,16}\*[01]\*([0-9a-f]+|[^*]{1,64}\*[0-9a-f]{1,16})\*(31|32|33|34|35)$",
+			"regex": "^\\$RAR3\\$\\*(1)\\*[0-9a-f]{1,16}\\*[0-9a-f]{1,8}\\*[0-9a-f]{1,16}\\*[0-9a-f]{1,16}\\*[01]\\*([0-9a-f]+|[^*]{1,64}\\*[0-9a-f]{1,16})\\*(31|32|33|34|35)$",
 			"rAttack": " ",
 			"options":[
 				{
 				"id": 23800,
-				"description": "RAR3-p (Compressed)"
-				"example": "$RAR3$*1*e54a73729887cb53*49b0a846*16*14*1*34620bcca8176642a210b1051901921e*30"
+				"description": "RAR3-p (Compressed)",
+				"example": "$RAR3$*1*ad56eb40219c9da2*834064ce*32*13*1*eb47b1abe17a1a75bce6c92ab1cef3f4126035ea95deaf08b3f32a0c7b8078e1*33"
 				}
 			]
 		},
@@ -2562,7 +2553,7 @@ var HashType:
 			"options":[
 				{
 				"id": 25300,
-				"description": "MS Office 2016 - SheetProtection"
+				"description": "MS Office 2016 - SheetProtection",
 				"example": "$office$2016$0$100000$876MLoKTq42+/DLp415iZQ==$TNDvpvYyvlSUy97UOLKNhXynhUDDA7H8kLql0ISH5SxcP6hbthdjaTo4Z3/MU0dcR2SAd+AduYb3TB5CLZ8+ow=="
 				}
 			]
