@@ -1,0 +1,27 @@
+{
+  "name": "hashtype-detector",
+  "version": "0.0.1",
+  "description": "Hashtype detector",
+  "main": "lib/es5/index.js",
+  "module": "lib/es6/index.js",
+  "keywords": [
+    "hashtypes",
+    "javascript",
+    "utils"
+  ],
+  "author": "xbenyx (https://github.com/xbenyx)",
+  "license": "GNUPLv3",
+  "bugs": {
+    "url": "https://github.com/xbenyx/hashtype-detector/issues"
+  },
+  "homepage": "https://github.com/xbenyx/hashtype-detector#readme",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  },
+  "files": [
+    "lib",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ]
+}

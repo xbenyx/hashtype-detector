@@ -1,21 +1,15 @@
 {
   "name": "hashtype-detector",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Hashtype detector",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "exports": {
     "./package.json": {
       "default": "./package.json"
-    },
-    ".": {
-      "types": "./index.d.ts"
     }
   },
   "scripts": {
-    "publish": "npm publish --access public",
-    "build": "rm -rf dist && microbundle --tsconfig tsconfig.json --no-sourcemap",
-    "dev": "microbundle --watch --tsconfig tsconfig.json --no-sourcemap"
+    "compile": "tsc && tsc --build tsconfig.es5.json",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",
@@ -23,11 +17,14 @@
   },
   "keywords": [
     "hash",
+    "utils",
     "hashcat",
+    "Cracking",
     "hashtype",
+    "utilities",
     "hashtopolis"
   ],
-  "author": "xbenyx",
+  "author": "xbenyx (https://github.com/xbenyx)",
   "license": "GNUPLv3",
   "bugs": {
     "url": "https://github.com/xbenyx/hashtype-detector/issues"
@@ -37,6 +34,9 @@
     "typescript": "^5.0.4"
   },
   "files": [
-    "lib"
+    "lib",
+    "LICENSE",
+    "package.json",
+    "README.md"
   ]
 }
