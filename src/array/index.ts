@@ -19,7 +19,6 @@ export function findHashType(hash: any) {
 
   for(let i=0; i < algoritms.length; i++){
     let result: any = new RegExp(algoritms[i]['regex']);
-    console.log(result)
     var out = result.test(hash);
     if(out && typeof algoritms[i]['options'] != 'undefined'){
       arr.push(algoritms[i]);

@@ -16,14 +16,12 @@ export function findHashType(hash) {
     // hash = isBase64(hash); //Check if hash is encoded in base64
     for (var i = 0; i < algoritms.length; i++) {
         var result = new RegExp(algoritms[i]['regex']);
-        console.log(result);
         var out = result.test(hash);
         if (out && typeof algoritms[i]['options'] != 'undefined') {
             arr.push(algoritms[i]);
             result.lastIndex = 0;
         }
     }
-    console.log(arr);
     if (arr.length === 0) {
         return "No hashes found.";
     }

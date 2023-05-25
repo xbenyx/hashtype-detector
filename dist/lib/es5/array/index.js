@@ -19,14 +19,12 @@ function findHashType(hash) {
     // hash = isBase64(hash); //Check if hash is encoded in base64
     for (var i = 0; i < algorithms_config_1.algoritms.length; i++) {
         var result = new RegExp(algorithms_config_1.algoritms[i]['regex']);
-        console.log(result);
         var out = result.test(hash);
         if (out && typeof algorithms_config_1.algoritms[i]['options'] != 'undefined') {
             arr.push(algorithms_config_1.algoritms[i]);
             result.lastIndex = 0;
         }
     }
-    console.log(arr);
     if (arr.length === 0) {
         return "No hashes found.";
     }
