@@ -1,12 +1,7 @@
 {
   "name": "hashtype-detector",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Hashtype detector",
-  "exports": {
-    "./package.json": {
-      "default": "./package.json"
-    }
-  },
   "scripts": {
     "compile": "tsc && tsc --build tsconfig.es5.json",
     "publish": "npm publish --access public"
@@ -32,11 +27,5 @@
   "homepage": "https://github.com/xbenyx/hashtype-detector#readme",
   "devDependencies": {
     "typescript": "^5.0.4"
-  },
-  "files": [
-    "lib",
-    "LICENSE",
-    "package.json",
-    "README.md"
-  ]
+  }
 }
