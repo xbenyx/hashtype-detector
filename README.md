@@ -1,5 +1,6 @@
 # Hashtype Detector
-Basic hashtype detector to implement in nodejs.
+
+This is a simple hashtype detector based on the hashtypes supported by hashcat. It detects the hash and returns hashcat id and description.
 
     npm i hashtype-detector --save
 

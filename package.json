@@ -1,12 +1,16 @@
 {
   "name": "hashtype-detector",
-  "version": "1.0.1",
+  "version": "0.0.1",
   "description": "Hashtype detector",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
-    "require": "./dist/index.js",
-    "default": "./dist/index.modern.js"
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts"
+    }
   },
   "scripts": {
     "publish": "npm publish --access public",
@@ -33,6 +37,6 @@
     "typescript": "^5.0.4"
   },
   "files": [
-    "src"
+    "lib"
   ]
 }
