@@ -12,20 +12,17 @@ export declare const algoritms: ({
 } | {
     regex: string;
     rAttack: string;
-    options: {
+    options: ({
         id: number;
         description: string;
         example: string;
-    }[];
+    } | {
+        id: number;
+        description: string;
+        example?: undefined;
+    })[];
     id?: undefined;
     description?: undefined;
-    example?: undefined;
-} | {
-    id: number;
-    description: string;
-    regex: string;
-    rAttack?: undefined;
-    options?: undefined;
     example?: undefined;
 } | {
     id: number;

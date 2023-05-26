@@ -32,6 +32,11 @@ export var algoritms = [
                 "example": "3af0389f093b181ae26452015f4ae728:user"
             },
             {
+                "id": 24,
+                "description": "SolarWinds Serv-U",
+                "example": "e983672a03adcc9767b24584338eb378"
+            },
+            {
                 "id": 30,
                 "description": "md5(utf16le($pass).$salt)",
                 "example": "b31d032cfdcf47a399990a71e43c5d2a:144816"
@@ -52,9 +57,19 @@ export var algoritms = [
                 "example": "bfd280436f45fa38eaacac3b00518f29:1234"
             },
             {
+                "id": 70,
+                "description": "md5(utf16le($pass))",
+                "example": "2303b15bfa48c74a74758135a0df1201"
+            },
+            {
                 "id": 900,
                 "description": "MD4",
                 "example": "afe04867ec7a3845145579a95f72eca7"
+            },
+            {
+                "id": 1000,
+                "description": "NTLM",
+                "example": "b4b9b02e6f09a9bd760f388b67351e2b"
             },
             {
                 "id": 2600,
@@ -72,6 +87,11 @@ export var algoritms = [
                 "example": "95248989ec91f6d0439dbde2bd0140be:1234"
             },
             {
+                "id": 3800,
+                "description": "md5($salt.$pass.$salt)",
+                "example": "2e45c4b99396c6cb2db8bda0d3df669f:1234"
+            },
+            {
                 "id": 3910,
                 "description": "md5(md5($pass).md5($salt))",
                 "example": "250920b3a5e31318806a032a4674df7e:1234"
@@ -82,6 +102,11 @@ export var algoritms = [
                 "example": "30d0cf4a5d7ed831084c5b8b0ba75b46:1234"
             },
             {
+                "id": 4110,
+                "description": "md5($salt.md5($pass.$salt))",
+                "example": "b4cb5c551a30f6c25d648560408df68a:1234"
+            },
+            {
                 "id": 4300,
                 "description": "md5(strtoupper(md5($pass)))",
                 "example": "b8c385461bb9f9d733d3af832cf60b27"
@@ -90,6 +115,11 @@ export var algoritms = [
                 "id": 4400,
                 "description": "md5(sha1($pass))",
                 "example": "288496df99b33f8f75a7ce4837d1b480"
+            },
+            {
+                "id": 4410,
+                "description": "md5(sha1($pass).$salt)",
+                "example": "bc8319c0220bff8a0d7f5d703114a725:34659348756345251"
             },
             {
                 "id": 11000,
@@ -143,14 +173,6 @@ export var algoritms = [
         ]
     },
     {
-        "id": 24,
-        "description": "SolarWinds Serv-U"
-    },
-    {
-        "id": 70,
-        "description": "md5(utf16le($pass))"
-    },
-    {
         "regex": "^[a-f0-9]{40}(:.+)?$",
         "rAttack": " ",
         "options": [
@@ -190,6 +212,11 @@ export var algoritms = [
                 "example": "d89c92b4400b15c39e462a8caa939ab40c3aeeea:1234"
             },
             {
+                "id": 170,
+                "description": "sha1(utf16le($pass))",
+                "example": "b9798556b741befdbddcbf640d1dd59d19b1e193"
+            },
+            {
                 "id": 4500,
                 "description": "sha1(sha1($pass))",
                 "example": "3db9184f5da4e463832b086211af8d2314919951"
@@ -203,6 +230,21 @@ export var algoritms = [
                 "id": 4710,
                 "description": "sha1(md5($pass).$salt)",
                 "example": "53c724b7f34f09787ed3f1b316215fc35c789504:hashcat1"
+            },
+            {
+                "id": 4510,
+                "description": "sha1(sha1($pass).$salt)",
+                "example": "9138d472fce6fe50e2a32da4eec4ecdc8860f4d5:hashcat1"
+            },
+            {
+                "id": 4520,
+                "description": "sha1($salt.sha1($pass))",
+                "example": "a0f835fdf57d36ebd8d0399cc44e6c2b86a1072b:511358214352751667201107073531735211566650747315"
+            },
+            {
+                "id": 4522,
+                "description": "PunBB",
+                "example": "4a2b722cc65ecf0f7797cdaea4bce81f66716eef:653074362104"
             },
             {
                 "id": 6000,
@@ -282,8 +324,15 @@ export var algoritms = [
         ]
     },
     {
-        "id": 125,
-        "description": "ArubaOS"
+        "regex": "^[a-f0-9]{50}$",
+        "rAttack": " ",
+        "options": [
+            {
+                "id": 125,
+                "description": "ArubaOS",
+                "example": "5387280701327dc2162bdeb451d5a465af6d13eff9276efeba"
+            }
+        ]
     },
     {
         "regex": "^0x0100[a-f0-9]{88}$",
@@ -328,10 +377,6 @@ export var algoritms = [
                 "example": "$episerver$*0*bEtiVGhPNlZpcUN4a3ExTg==*utkfN0EOgljbv5FoZ6+AcZD5iLk"
             }
         ]
-    },
-    {
-        "id": 170,
-        "description": "sha1(utf16le($pass))"
     },
     {
         "regex": "^[a-f0-9]{16}$",
@@ -383,24 +428,41 @@ export var algoritms = [
         ]
     },
     {
-        "id": 501,
-        "description": "Juniper IVE"
+        "regex": "^[a-zA-Z0-9\/+]+\/[a-zA-Z0-9\/+]{17,60}==$",
+        "rAttack": " ",
+        "options": [
+            {
+                "id": 501,
+                "description": "Juniper IVE",
+                "example": "3u+UR6n8AgABAAAAHxxdXKmiOmUoqKnZlf8lTOhlPYy93EAkbPfs5+49YLFd/B1+omSKbW7DoqNM40/EeVnwJ8kYoXv9zy9D5C5m5A=="
+            },
+        ]
     },
     {
-        "id": 600,
-        "description": "BLAKE2b-512"
+        "regex": "^\\$BLAKE2\\$[a-f0-9]{128}$",
+        "rAttack": " ",
+        "options": [
+            {
+                "id": 600,
+                "description": "BLAKE2b-512",
+                "example": "$BLAKE2$296c269e70ac5f0095e6fb47693480f0f7b97ccd0307f5c3bfa4df8f5ca5c9308a0e7108e80a0a9c0ebb715e8b7109b072046c6cd5e155b4cfd2f27216283b1e"
+            },
+        ]
     },
     {
-        "id": 610,
-        "description": "BLAKE2b-512($pass.$salt)"
-    },
-    {
-        "id": 620,
-        "description": "BLAKE2b-512($salt.$pass)"
-    },
-    {
-        "id": 1000,
-        "description": "NTLM"
+        "regex": "^\\$BLAKE2\\$[a-f0-9]{128}:.{4}$",
+        "rAttack": " ",
+        "options": [
+            {
+                "id": 610,
+                "description": "BLAKE2b-512($pass.$salt)",
+                "example": "$BLAKE2$41fcd44c789c735c08b43a871b81c8f617ca43918d38aee6cf8291c58a0b00a03115857425e5ff6f044be7a5bec8536b52d6c9992e21cd43cdca8a55bbf1f5c1:1033"
+            },
+            {
+                "id": 620,
+                "description": "BLAKE2b-512($salt.$pass)"
+            }
+        ]
     },
     {
         "regex": "^([^\\\\\\/:*?\"<>|]{1,20}:)?[a-f0-9]{32}(:[^\\\\\\/:*?\"<>|]{1,20})?$",
@@ -453,6 +515,11 @@ export var algoritms = [
                 "example": "8efbef4cec28f228fa948daaf4893ac3638fbae81358ff9020be1d7a9a509fc6:1234"
             },
             {
+                "id": 1470,
+                "description": "sha256(utf16le($pass))",
+                "example": "9e9283e633f4a7a42d3abc93701155be8afe5660da24c8758e7d3533e2f2dc82"
+            },
+            {
                 "id": 5000,
                 "description": "SHA-3(Keccak)",
                 "example": "05ac0c544060af48f993f9c3cdf2fc03937ea35b:232725102020"
@@ -501,10 +568,6 @@ export var algoritms = [
                 "example": "$episerver$*1*MDEyMzQ1Njc4OWFiY2RlZg==*lRjiU46qHA7S6ZE7RfKUcYhB85ofArj1j7TrCtu3u6Y"
             }
         ]
-    },
-    {
-        "id": 1470,
-        "description": "sha256(utf16le($pass))"
     },
     {
         "regex": "^[a-zA-Z0-9\\/.]{13}$",
@@ -568,6 +631,11 @@ export var algoritms = [
                 "example": "7cce966f5503e292a51381f238d071971ad5442488f340f98e379b3aeae2f33778e3e732fcc2f7bdc04f3d460eebf6f8cb77da32df25500c09160dd3bf7d2a6b:1234"
             },
             {
+                "id": 1770,
+                "description": "sha512(utf16le($pass))",
+                "example": "79bba09eb9354412d0f2c037c22a777b8bf549ab12d49b77d5b25faa839e4378d8f6fa11aceb6d9413977ae5ad5d011568bad2de4f998d75fd4ce916eda83697"
+            },
+            {
                 "id": 6100,
                 "description": "Whirlpool",
                 "example": "7ca8eaaaa15eaa4c038b4c47b9313e92da827c06940e69947f85bc0fbef3eb8fd254da220ad9e208b6b28f6bb9be31dd760f1fdb26112d83f87d96b416a4d258"
@@ -613,10 +681,6 @@ export var algoritms = [
         ]
     },
     {
-        "id": 1770,
-        "description": "sha512(utf16le($pass))"
-    },
-    {
         "regex": "^\\$6\\$(rounds=[0-9]+\\$)?[a-z0-9\\/.]{0,16}\\$[a-z0-9\\/.]{86}$",
         "rAttack": " ",
         "options": [
@@ -643,11 +707,6 @@ export var algoritms = [
         ]
     },
     {
-        "id": 2400,
-        "description": "Cisco-PIX MD5",
-        "regex": "^[a-z0-9\\/.]{16}$",
-    },
-    {
         "regex": "^[a-zA-Z0-9\\/.]{16}([:$].{1,})?$",
         "rAttack": " ",
         "options": [
@@ -655,6 +714,11 @@ export var algoritms = [
                 "id": 2410,
                 "description": "Cisco-ASA MD5",
                 "example": "02dMBMYkTdC5Ziyp:36"
+            },
+            {
+                "id": 2400,
+                "description": "Cisco-PIX MD5",
+                "example": "dRRVnUmUHXOTt9nk"
             }
         ]
     },
@@ -729,6 +793,16 @@ export var algoritms = [
                 "id": 3200,
                 "description": "bcrypt, Blowfish(OpenBSD)",
                 "example": "$2a$05$LhayLxezLhK1LhWvKxCyLOj0j1u.Kj0jZ0pEmm134uzrQlFvQJLF6"
+            },
+            {
+                "id": 25600,
+                "description": "bcrypt(md5($pass)) / bcryptmd5",
+                "example": "$2a$05$/VT2Xs2dMd8GJKfrXhjYP.DkTjOVrY12yDN7/6I8ZV0q/1lEohLru"
+            },
+            {
+                "id": 25800,
+                "description": "bcrypt(sha1($pass)) / bcryptsha1",
+                "example": "$2a$05$Uo385Fa0g86uUXHwZxB90.qMMdRFExaXePGka4WGFv.86I45AEjmO"
             }
         ]
     },
@@ -744,27 +818,6 @@ export var algoritms = [
         ]
     },
     {
-        "id": 3800,
-        "description": "md5($salt.$pass.$salt)",
-        "example": "2e45c4b99396c6cb2db8bda0d3df669f:1234"
-    },
-    {
-        "id": 4110,
-        "description": "md5($salt.md5($pass.$salt))"
-    },
-    {
-        "id": 4410,
-        "description": "md5(sha1($pass).$salt)"
-    },
-    {
-        "id": 4510,
-        "description": "sha1(sha1($pass).$salt)"
-    },
-    {
-        "id": 4520,
-        "description": "sha1($salt.sha1($pass))"
-    },
-    {
         "regex": "^[a-f0-9]{40}:[a-f0-9]{0,32}$",
         "rAttack": " ",
         "options": [
@@ -776,12 +829,9 @@ export var algoritms = [
         ]
     },
     {
-        "id": 4522,
-        "description": "PunBB"
-    },
-    {
         "id": 4711,
-        "description": "Huawei sha1(md5($pass).$salt)"
+        "description": "Huawei sha1(md5($pass).$salt)",
+        "example": ""
     },
     {
         "regex": "^(\\$chap\\$0\\*)?[a-f0-9]{32}[\\*:][a-f0-9]{32}(:[0-9]{2})?$",
@@ -1053,8 +1103,15 @@ export var algoritms = [
         ]
     },
     {
-        "id": 7401,
-        "description": "MySQL $A$ (sha256crypt)"
+        "regex": "^\\$mysql\\$A\\$[0-9]{3}\\*[A-Z0-9]{40}\\*[A-Z0-9]{86}$",
+        "rAttack": " ",
+        "options": [
+            {
+                "id": 7401,
+                "description": "MySQL $A$ (sha256crypt)",
+                "example": "$mysql$A$005*F9CC98CE08892924F50A213B6BC571A2C11778C5*625479393559393965414D45316477456B484F41316E64484742577A2E3162785353526B7554584647562F"
+            }
+        ]
     },
     {
         "regex": "^\\$(krb5pa|mskrb5)\\$([0-9]{2})?\\$.+\\$[a-f0-9]{1,}$",
@@ -1075,12 +1132,13 @@ export var algoritms = [
                 "id": 7700,
                 "description": "SAP CODVN B (BCODE)",
                 "example": "USER$C8B48F26B87B7EA7"
+            },
+            {
+                "id": 7701,
+                "description": "SAP CODVN B (BCODE) from RFC_READ_TABLE",
+                "example": "027642760180$77EC386300000000"
             }
         ]
-    },
-    {
-        "id": 7701,
-        "description": "SAP CODVN B (BCODE) from RFC_READ_TABLE"
     },
     {
         "regex": "^(.+)?\\$[A-F0-9]{40}$",
@@ -1090,12 +1148,13 @@ export var algoritms = [
                 "id": 7800,
                 "description": "SAP CODVN F/G (PASSCODE)",
                 "example": "USER$ABCAD719B17E7F794DF7E686E563E9E2D24DE1D0"
+            },
+            {
+                "id": 7801,
+                "description": "SAP CODVN F/G (PASSCODE) from RFC_READ_TABLE",
+                "example": "604020408266$32837BA7B97672BA4E5A00000000000000000000"
             }
         ]
-    },
-    {
-        "id": 7801,
-        "description": "SAP CODVN F/G (PASSCODE) from RFC_READ_TABLE"
     },
     {
         "regex": "^\\$S\\$[a-zA-Z0-9\\/.]{52}$",
@@ -1468,12 +1527,20 @@ export var algoritms = [
         ]
     },
     {
-        "id": 10810,
-        "description": "sha384($pass.$salt)"
+        "regex": "^[a-f0-9]{50,100}\:[0-9]{25}$",
+        "rAttack": " ",
+        "options": [
+            {
+                "id": 10810,
+                "description": "sha384($pass.$salt)",
+                "example": "ca1c843a7a336234baf9db2e10bc38824ce523402fbd7741286b1602bdf6cb869a45289bb9fb706bd404b9f3842ff729:2746460797049820734631508"
+            },
+        ]
     },
     {
         "id": 10820,
-        "description": "sha384($salt.$pass)"
+        "description": "sha384($salt.$pass)",
+        "example": "63f63d7f82d4a4cb6b9ff37a6bc7c5ec39faaf9c9078551f5cbf7960e76ded87b643d37ac53c45bc544325e7ff83a1f2:93362"
     },
     {
         "id": 10830,
@@ -1500,7 +1567,8 @@ export var algoritms = [
     },
     {
         "id": 10901,
-        "description": "RedHat 389-DS LDAP (PBKDF2-HMAC-SHA256)"
+        "description": "RedHat 389-DS LDAP (PBKDF2-HMAC-SHA256)",
+        "example": "{PBKDF2_SHA256}AAAgADkxMjM2NTIzMzgzMjQ3MjI4MDAwNTk5OTAyOTk4NDI2MjkyMzAzNjg0NjQwOTMxNjI3OTMzNjg0MDI0OTY5NTe5ULagRTYpLaUoeqJMg8x9W/DXu+9VTFaVhaYvebYrY+sOqn1ZMRnws22C1uAkiE2tFM8qN+xw5xe7OmCPZ203NuruK4oB33QlsKIEz4ppm0TR94JB9PJx7lIQwFHD3FUNUNryj4jk6UYyJ4+V1Z9Ug/Iy/ylQBJgfs5ihzgxHYZrfp1wUCXFzlZG9mxmziPm8VFnAhaX4+FBAZvLAx33jpbKOwEg7TmwP2VJ8BNFLQRqwYdlqIjQlAhncXH+dqIF9VdM4MonAA0hx76bMvFTP7LF5VO1IqVmcuYz7YG9v4KKRjnvoUUqOj6okUBQTay3EzsdFVnUW1FemYOccJd5q"
     },
     {
         "regex": "^\\$postgres\\$.[^\\*]+[*:][a-f0-9]{1,32}[*:][a-f0-9]{32}$",
@@ -2053,8 +2121,15 @@ export var algoritms = [
         ]
     },
     {
-        "id": 18000,
-        "description": "Keccak-512"
+        "regex": "^[a-f0-9]{128}$",
+        "rAttack": " ",
+        "options": [
+            {
+                "id": 18000,
+                "description": "Keccak-512",
+                "example": "2fbf5c9080f0a704de2e915ba8fdae6ab00bbc026b2c1c8fa07da1239381c6b7f4dfd399bf9652500da723694a4c719587dd0219cb30eabe61210a8ae4dc0b03"
+            },
+        ]
     },
     {
         "id": 18100,
@@ -2375,7 +2450,8 @@ export var algoritms = [
     },
     {
         "id": 22600,
-        "description": "Telegram Desktop App Passcode (PBKDF2-HMAC-SHA1)"
+        "description": "Telegram Desktop App Passcode (PBKDF2-HMAC-SHA1)",
+        "example": "$telegram$1*4000*913a7e42143b4eed0fb532dacfa04e3a0eae036ae66dd02de76323046c575531*cde5f7a3bda3812b4a3cd4df1269c6be18ca7536981522c251cab531c274776804634cdca5313dc8beb9895f903a40d874cd50dbb82e5e4d8f264820f3f2e2111a5831e1a2f16b1a75b2264c4b4485dfe0f789071130160af205f9f96aef378ee05602de2562f8c3b136a75ea01f54f4598af93f9e7f98eb66a5fd3dabaa864708fe0e84b59b77686974060f1533e3acc5367bc493915b5614603cf5601cfa0a6b8eae4c4bd24948176dd7ff470bc0863f35fdfce31a667c70e37743f662bc9c5ec86baff3ebb6bf7de96bcdfaca18baf9617a979424f792ef6e65e346ea2cbc1d53377f47c3fc681d7eda8169e6e20cd6a22dd94bf24933b8ffc4878216fa9edc7c72a073446a14b63e12b223f840217a7eac51b6afcc15bfa12afd3e85d3bd"
     },
     {
         "id": 22700,
@@ -2563,16 +2639,8 @@ export var algoritms = [
         "description": "Stargazer Stellar Wallet XLM"
     },
     {
-        "id": 25600,
-        "description": "bcrypt(md5($pass)) / bcryptmd5"
-    },
-    {
         "id": 25700,
         "description": "MurmurHash"
-    },
-    {
-        "id": 25800,
-        "description": "bcrypt(sha1($pass)) / bcryptsha1"
     },
     {
         "id": 25900,
@@ -2987,8 +3055,15 @@ export var algoritms = [
         "description": "Bitcoin raw private key (P2SH(P2WPKH)), uncompressed"
     },
     {
-        "id": 31000,
-        "description": "BLAKE2s-256"
+        "regex": "^\\$BLAKE2\\$[a-f0-9]{64}$",
+        "rAttack": " ",
+        "options": [
+            {
+                "id": 31000,
+                "description": "BLAKE2s-256",
+                "example": "$BLAKE2$2c719b484789ad5f6fc1739012182169b25484af156adc91d4f64f72400e574a"
+            }
+        ]
     },
     {
         "id": 31100,
