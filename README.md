@@ -4,5 +4,5 @@ This is a simple hashtype detector based on the hashtypes supported by hashcat. 
 
     npm i hashtype-detector --save
 
-This tool is being use in Hashtopolis.npm
+This tool is being used in Hashtopolis.
 
