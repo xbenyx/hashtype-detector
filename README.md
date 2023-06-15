@@ -5,5 +5,5 @@ you can install it using npm.
 
     npm i hashtype-detector --save
 
-This tool is in beta phase.
+This tool is in beta. 
 
