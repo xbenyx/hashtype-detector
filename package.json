@@ -11,16 +11,18 @@
     "url": "git+https://github.com/xbenyx/hashtype-detector.git"
   },
   "keywords": [
-    "hash",
+    "hashes",
     "utils",
     "hashcat",
     "Cracking",
-    "hashtype",
-    "utilities",
-    "hashtopolis"
+    "hashtypes",
+    "Password Recovery",
+    "Password Cracking",
+    "hashtopolis",
+    "xbenyx"
   ],
   "author": "xbenyx (https://github.com/xbenyx)",
-  "license": "GNUPLv3",
+  "license": "Creative Commons Attribution (CC BY)",
   "bugs": {
     "url": "https://github.com/xbenyx/hashtype-detector/issues"
   },
