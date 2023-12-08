@@ -1,6 +1,6 @@
 {
   "name": "hashtype-detector",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Hashtype detector",
   "scripts": {
     "compile": "tsc && tsc --build tsconfig.es5.json",
