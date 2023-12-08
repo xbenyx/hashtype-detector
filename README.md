@@ -1,19 +1,10 @@
 # Hash Type Detector
 
-<<<<<<< HEAD
 **Hashtype Detector** is a simple utility designed to detect the hash type of a given hash. It leverages the hashtypes supported by hashcat, providing information such as the hashcat id and a description of the hash.
-=======
-This is a simple hashtype detector based on the hashtypes supported by hashcat. It detects the hash and returns hash type id used in hashcat and description.
-Install using npm.
->>>>>>> d639b152ba7aa51d8f1e13954b1f181fe6712ac7
 
 ## Installation
 
-<<<<<<< HEAD
 Install the package using npm:
-=======
-This tool is in beta.
->>>>>>> d639b152ba7aa51d8f1e13954b1f181fe6712ac7
 
 ```bash
 npm install hashtype-detector --save
